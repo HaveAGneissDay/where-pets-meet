@@ -24,6 +24,8 @@
 
     <link rel="stylesheet" href="assets/css/style.css">
 
+    <script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
+
   </head>
 
   <body>
@@ -43,15 +45,57 @@
         <!-- Logo Spacers -->
         <div class="col s1 m2 l2 layGuide"><p>Right Spacer</p></div>
 
+        <!-- Div with inputs dropdowns and humanizing text. -->
+        <div class="col s12 m12 l12 layGuide">
 
-        <div class="col s12 m12 l12 layGuide"><p>I am a ______________ _____________ seeking a ____________</p></div>
-        <div class="col s12 m12 l12 layGuide"><p>near __________________ [Submit]</p></div>
+          <div class="col s12 m2 center">
+            <h6><strong>I am a</strong></h6>
+          </div>
 
-        <video autoplay loop id="background-video" muted plays-inline>
-                <source src="assets/images/placeholder.mp4" type="video/mp4">
-        </video>
+          <div class="input-field col s12 m4">
+            <select class="icons">
+            <option value="" disabled selected>Choose an animal.</option>
+            <option value="dog" data-icon="assets/images/dog.jpeg" class="left circle">Dog</option>
+            <option value="cat" data-icon="assets/images/cat.png" class="left circle">Cat</option>
+            </select>
+          </div>
+
+          <div class="col s12 m2 center">
+            <h6><strong>seeking a</strong></h6>
+          </div>
+
+          <div class="input-field col s12 m4">
+            <select class="icons">
+            <option value="" disabled selected>Choose an animal.</option>
+            <option value="dog" data-icon="assets/images/dog.jpeg" class="left circle">Dog</option>
+            <option value="cat" data-icon="assets/images/cat.png" class="left circle">Cat</option>
+            </select>
+          </div>
+
+        </div>
+
+        <div class="col s12 m12 l12 layGuide">
+
+          <div class="col s12 m2 center">
+            <h6><strong>near</strong></h6>
+          </div>
+
+          <div class="input-field col s6">
+            <input placeholder="94005" id="zip_code" type="text" class="validate">
+            <label for="zip_code">Zip Code</label>
+          </div>
+
+          <button class="btn waves-effect waves-light" type="submit" name="action" id="submit">Pet Me
+            <i class="fas fa-paw right"></i>
+          </button>
+
+        </div>
 
       </div>
+
+      <video autoplay loop id="background-video" muted plays-inline>
+              <source src="assets/images/placeholder.mp4" type="video/mp4">
+      </video>
 
     </div>
     <!-- Container div end -->
@@ -60,7 +104,6 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-
     <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
     <script src="assets/js/app.js"></script>
 
