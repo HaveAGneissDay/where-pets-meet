@@ -1,6 +1,6 @@
 /* Temporary css for visualizing layout. */
 .layGuide {
-  background: rgba(200, 200, 200, 0.65);
+  background: rgba(200, 150, 150, 0.40);
   border: 1px solid red;
 
 }
@@ -17,13 +17,13 @@
   z-index: -100;
 
 /* Adjustments for viewing the nice part of the video. */
-  margin-left: -380px;
-  margin-top: -100px;
+  margin-left: -200px;
+  margin-top: 0px;
 }
 
 .container {
   /* Adjustments for vertically centering content. */
-  margin-top: 225px;
+  margin-top: 130px;
 }
 
 h6 {
@@ -32,10 +32,11 @@ h6 {
 }
 
 .fa-paw {
-  margin-top: 12px;
+  margin-top: 11px;
   margin-left: 8px;
 }
 
 #submit {
   margin-top: 20px;
+  margin-left: 20px;
 }
