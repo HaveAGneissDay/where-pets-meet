@@ -5,6 +5,10 @@
 
 }
 
+.tempNotice {
+  background: rgba(200, 200, 200, 0.40);
+}
+
 .header-img {
   height: 64px;
 }
@@ -14,18 +18,16 @@ nav .brand-logo {
 }
 
 h2 {
-    color: #fff;
-    font-weight: 400;
-    text-align: center;
-    text-shadow: 0 0 4px #666;
-    padding-bottom: 10px;
-     font-size: 1.56rem;
-    line-height: 250%;
-    /* margin: 1.78rem 0 1.424rem 0; */
+  color: red;
+  text-align: center;
+  padding-bottom: 10px;
+  font-size: 12px;
+  line-height: 250%;
+  text-shadow: 0 0 px #666;
 }
 
 h1 {
-    color: #fff;
+    color: red;
     font-weight: 400;
     text-align: center;
     text-shadow: 0 0 4px #666;
