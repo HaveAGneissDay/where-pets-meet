@@ -19,7 +19,11 @@ $(document).ready(function() {
 
 });
 
-$.getJSON('http://api.petfinder.com/pet.find?format=json&key=dd9016ebaee01ff97c4bd3319ee97eaf&animal=cat&location=94025&?count=5&callback=?')
+var soughtAnimal = "dog" // $(soughtAnimal).text;
+console.log(soughtAnimal);
+var queryURL = 'http://api.petfinder.com/pet.find?format=json&key=dd9016ebaee01ff97c4bd3319ee97eaf&animal=' + soughtAnimal + '&location=94025&?count=5&callback=?';
+
+$.getJSON(queryURL)
   .done(function(petApiData) {
 
   // Looping through each result item
@@ -50,30 +54,12 @@ $.getJSON('http://api.petfinder.com/pet.find?format=json&key=dd9016ebaee01ff97c4
     // console.log(breed2);
     console.log("____________________");
 
-    // // Creating and storing a div tag
-    // var animalPic = $("<img />");
-    //
-    // // Setting the src attribute of the image to a property pulled off the result item
-    // animalPic.addClass('animalPic img-rounded media-middle');
-    // animalPic.attr("src", results[i].images.fixed_height.url);
-    // animalPic.attr("data-animate", results[i].images.fixed_height.url);
-    // animalPic.attr("data-still", results[i].images.fixed_height_still.url);
-    // animalPic.attr("data-still", results[i].images.fixed_height_still.url);
-    // animalPic.attr("data-state", "animate");
-    //
-    // // Prependng the animalDiv to the HTML page in the "#gifs-appear-here" div
-    // $("#gifSpace").prepend(animalPic);
   }
 
 })
   .error(function(err) {
     alert('Error retrieving data!');
 });
-
-// $.getJSON('http://api.petfinder.com/my.method?format=json&key=12345&callback=?')
-//   .done(function(petApiData) { alert('Data retrieved!'; })
-//   .error(function(err) { alert('Error retrieving data!');
-// });
 
 
 //Components that we need in general terms
