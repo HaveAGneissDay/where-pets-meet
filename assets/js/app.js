@@ -48,19 +48,31 @@ function processData(petApiData){
    var petName = results.pet[i].name.$t
    console.log(petName);
 
-   var gender = results.pet[i].sex.$t
-   console.log(gender);
+   var petGender = results.pet[i].sex.$t
+   console.log(petGender);
+
    var petPhone = results.pet[i].contact.phone.$t
-   console.log(results.pet[i].contact.phone.$t);
+   console.log(petPhone);
 
-   console.log(results.pet[i].contact.email.$t);
-   console.log(results.pet[i].description.$t);
-   console.log(results.pet[i].contact.city.$t);
-   console.log(results.pet[i].contact.state.$t);
+   var petEmail = results.pet[i].contact.email.$t
+   console.log(petEmail);
 
-   console.log(results.pet[i].contact.zip.$t);
+   var aboutPet = results.pet[i].description.$t
+   console.log(aboutPet);
+
+   var petCity = results.pet[i].contact.city.$t
+   console.log(petCity);
+
+   var petState = results.pet[i].contact.state.$t
+   console.log(petState);
+
+   var petZipcode = results.pet[i].contact.zip.$t
+   console.log(petZipcode);
+
    console.log("--------");
-   console.log((results.pet[i].contact.city.$t)+" "+(results.pet[i].contact.state.$t)+" "+(results.pet[i].contact.zip.$t));
+   console.log(petCity+" "+petState+" "+petZipcode);
+
+   console.log('Image source link:');
    console.log(results.pet[i].media.photos.photo[2].$t);
 
    // console.log(breed1);
@@ -85,14 +97,6 @@ function processData(petApiData){
  }
 
 }
-
-
-// $.getJSON('http://api.petfinder.com/my.method?format=json&key=12345&callback=?')
-//   .done(function(petApiData) { alert('Data retrieved!'; })
-//   .error(function(err) { alert('Error retrieving data!');
-// });
-
-
 
 //Components that we need in general terms
 // What should appear when the page opens. Dynamically generated
