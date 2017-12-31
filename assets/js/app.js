@@ -24,7 +24,7 @@ $(document).ready(function() {
 
 var soughtAnimal = "dog" // $(soughtAnimal).text;
 console.log(soughtAnimal);
-var queryURL = 'http://api.petfinder.com/pet.find?format=json&key=dd9016ebaee01ff97c4bd3319ee97eaf&animal=' + soughtAnimal + '&location=94025&?count=5&callback=?';
+var queryURL = 'https://api.petfinder.com/pet.find?format=json&key=dd9016ebaee01ff97c4bd3319ee97eaf&animal=' + soughtAnimal + '&location=94025&?count=5&callback=?';
 
 $.getJSON(queryURL)
 
