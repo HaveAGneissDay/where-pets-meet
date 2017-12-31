@@ -19,6 +19,47 @@ $(document).ready(function() {
 
 });
 
+var soughtAnimal = "dog" // $(soughtAnimal).text;
+console.log(soughtAnimal);
+var queryURL = 'http://api.petfinder.com/pet.find?format=json&key=dd9016ebaee01ff97c4bd3319ee97eaf&animal=' + soughtAnimal + '&location=94025&?count=5&callback=?';
+
+$.getJSON(queryURL)
+  .done(function(petApiData) {
+
+  // Looping through each result item
+  var results = petApiData.petfinder.pets
+
+  for (var i = 0; i < 25; i++) {
+
+    // var breed1 = results.pet[i].breeds.breed[0].$t
+    // var breed2 = results.pet[i].breeds.breed[1].$t
+    var petName = results.pet[i].name.$t
+    console.log(petName);
+
+    var gender = results.pet[i].sex.$t
+    console.log(gender);
+    var petPhone = results.pet[i].contact.phone.$t
+    console.log(results.pet[i].contact.phone.$t);
+
+    console.log(results.pet[i].contact.email.$t);
+    console.log(results.pet[i].description.$t);
+    console.log(results.pet[i].contact.city.$t);
+    console.log(results.pet[i].contact.state.$t);
+    console.log(results.pet[i].contact.zip.$t);
+    console.log("--------");
+    console.log((results.pet[i].contact.city.$t)+" "+(results.pet[i].contact.state.$t)+" "+(results.pet[i].contact.zip.$t));
+    console.log(results.pet[i].media.photos.photo[2].$t);
+
+    // console.log(breed1);
+    // console.log(breed2);
+    console.log("____________________");
+
+  }
+
+})
+  .error(function(err) {
+    alert('Error retrieving data!');
+});
 
 
 //Components that we need in general terms
