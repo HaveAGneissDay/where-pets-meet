@@ -1,7 +1,19 @@
 /* Temporary css for visualizing layout. */
 .layGuide {
-  background: rgba(200, 150, 150, 0.40);
+  background: rgba(200, 150, 150, 0.30);
   border: 1px solid red;
+
+}
+
+.layGuide1 {
+  background: rgba(150, 150, 200, 0.30);
+  border: 1px solid blue;
+
+}
+
+.layGuide3 {
+  background: rgba(50, 250, 250, 0.30);
+  border: 1px solid orange;
 
 }
 
@@ -14,23 +26,23 @@ nav .brand-logo {
 }
 
 h2 {
-    color: #fff;
+    font-size: 1.56rem;
     font-weight: 400;
     text-align: center;
     text-shadow: 0 0 4px #666;
-    padding-bottom: 10px;
-     font-size: 1.56rem;
     line-height: 250%;
+    color: #fff;
+    padding-bottom: 10px;
     /* margin: 1.78rem 0 1.424rem 0; */
 }
 
 h1 {
-    color: #fff;
+    font-size: 30px;
     font-weight: 400;
+    color: #fff;
     text-align: center;
     text-shadow: 0 0 4px #666;
     padding-bottom: 10px;
-    /* font-size: 4.2rem; */
     /* line-height: 110%; */
     /* color: antiquewhite; */
     /* margin: 2.1rem 0 1.68rem 0; */
@@ -48,7 +60,7 @@ h1 {
   z-index: -100;
 
 /* Adjustments for viewing the nice part of the video. */
-  margin-left: -200px;
+  margin-left: -50px;
   margin-top: 0px;
 }
 
