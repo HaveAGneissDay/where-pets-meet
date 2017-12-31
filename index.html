@@ -34,25 +34,28 @@
   </head>
 
   <body>
-    <nav class="pink" role="navigation">
-  <div class="nav-wrapper container">
-    <img class="header-img"  id="logo-container" src="assets/images/logo_hero.png" alt="Pet Me Logo">
-    <!-- <a id="logo-container" href="#" class="brand-logo">PET ME</a> -->
-    <ul class="right hide-on-med-and-down">
-      <li><a href="#">Contact US</a></li>
-    </ul>
 
-    <ul id="nav-mobile" class="side-nav">
-      <li><a href="#">Contact us</a></li>
-    </ul>
-    <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-  </div>
-</nav>
+    <nav class="pink" role="navigation">
+
+      <div class="nav-wrapper container">
+        <img class="header-img"  id="logo-container" src="assets/images/logo_hero.png" alt="Pet Me Logo">
+        <!-- <a id="logo-container" href="#" class="brand-logo">PET ME</a> -->
+        <ul class="right hide-on-med-and-down">
+          <li><a href="#">Contact US</a></li>
+        </ul>
+
+        <ul id="nav-mobile" class="side-nav">
+          <li><a href="#">Contact us</a></li>
+        </ul>
+        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+      </div>
+
+    </nav>
 
     <!-- Container div start -->
     <div class="container">
 
-      <div class="row">
+      <div class="row" id="topper">
         <!-- Logo Spacers layGuide -->
         <!-- lets not mentionit is not real -->
         <!-- <div class="col s12 m12 l12"><p style="color:red;"class="center">This is not a real service. Just a class project.</p></div> -->
@@ -62,31 +65,32 @@
         <!-- Logo layGuide-->
         <div class="col s10 m8 l8">
 
-
           <div id="rotater" class="rotate" data-rotate-interval="1500" data-rotate-animate="bounceIn,bounceOut">
 
-                                    <h1 class="PetClass">Find a new home for a <span class="rotate-arena bounceIn animated">Cat</span></h1>
+            <h1 class="PetClass">Find a new home for a <span class="rotate-arena bounceIn animated">Cat</span></h1>
 
-                                    <ul style="display: none;">
-                                        <!-- <li>Cat</li> -->
-                                        <li>Dog</li>
-                                        <li>Rabbit</li>
-                                        <li>Small & Furry</li>
-                                        <li>Horse</li>
-                                        <li>Bird</li>
-                                        <li>Fish</li>
-                                        <li>Pig</li>
-                                        <li>Cat</li>
-                                    </ul>
+            <ul style="display: none;">
+                <!-- <li>Cat</li> -->
+                <li>Dog</li>
+                <li>Rabbit</li>
+                <li>Small & Furry</li>
+                <li>Horse</li>
+                <li>Bird</li>
+                <li>Fish</li>
+                <li>Pig</li>
+                <li>Cat</li>
+            </ul>
 
-                                </div>
-<!-- <h1>
-      <strong class="inverted">
-          <h1 style="text-align: center; font-weight: 100; margin-top: 40px; font-size: 300%;">Find a new home for <span class="rotator">
-<div class="inner" style="margin-top: -1080px;"><span>Reptile</span><span>Cat</span><span>Parrot</span><span>Iguana</span><span>Snake</span><span>Reptile</span><span>Dog</span><span>Cat</span><span>iPhone 4s</span><span>iPhone 5</span><span>iPhone 5c</span><span>iPhone 5s</span><span>iMac</span><span>Powerbook</span><span>Mac Mini</span><span>Macbook Pro</span><span>Macbook Air</span><span>Macbook</span><span class="any">anything</span></div>
-<p></p></span></h1> -->
+          </div>
 
-<!-- //Temp hiding the logo_hero
+        </div>
+        <!-- <h1>
+              <strong class="inverted">
+                  <h1 style="text-align: center; font-weight: 100; margin-top: 40px; font-size: 300%;">Find a new home for <span class="rotator">
+        <div class="inner" style="margin-top: -1080px;"><span>Reptile</span><span>Cat</span><span>Parrot</span><span>Iguana</span><span>Snake</span><span>Reptile</span><span>Dog</span><span>Cat</span><span>iPhone 4s</span><span>iPhone 5</span><span>iPhone 5c</span><span>iPhone 5s</span><span>iMac</span><span>Powerbook</span><span>Mac Mini</span><span>Macbook Pro</span><span>Macbook Air</span><span>Macbook</span><span class="any">anything</span></div>
+        <p></p></span></h1> -->
+
+        <!-- //Temp hiding the logo_hero
 
         <h2 style="text-align: center; font-weight: 100; margin-top: 0px;">Please select your PET</h2>
           <img class="responsive-img" src="assets/images/logo_hero.png" alt="Pet Me Logo">
@@ -144,31 +148,25 @@
 
       </div>
 
-      <!-- <video autoplay loop id="background-video" muted plays-inline>
-              <source src="assets/images/cat.mp4" type="video/mp4">
-      </video> -->
-
-
-
+      <video autoplay loop id="background-video" muted plays-inline>
+          <source src="assets/images/cat.mp4" type="video/mp4">
+      </video>
 
       <!-- //animated background-->
-      <div id="animated-background-wrapper">
-        <video id="animated-background" preload="auto" autoplay="autoplay" loop="loop" style="opacity: 1.5;"><source src="assets/images/cat.mp4" type="video/mp4"></video>
-        </div>
+      <!-- <div id="animated-background-wrapper">
+      <video id="animated-background" preload="auto" autoplay="autoplay" loop="loop" style="opacity: 1.5;"><source src="assets/images/cat.mp4" type="video/mp4"></video>
+      </div> -->
     </div>
     <!-- Container div end -->
 
     <!-- Scripts -->
+    <script src="assets/js/jquery.rotator.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
     <script src="assets/js/app.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="assets/js/jquery.rotator.js"></script>
-    <script>
-$(".rotate").rotator();
-</script>
 
 
   </body>

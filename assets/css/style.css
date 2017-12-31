@@ -77,7 +77,7 @@ h1 {
 
 .container {
   /* Adjustments for vertically centering content. */
-  margin-top: 130px;
+  /* margin-top: 130px; */
 }
 
 h6 {
@@ -93,4 +93,8 @@ h6 {
 #submit {
   margin-top: 20px;
   margin-left: 11px;
+}
+
+#topper {
+  margin-top: 100px;
 }

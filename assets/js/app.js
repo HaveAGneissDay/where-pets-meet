@@ -3,6 +3,9 @@ $(document).ready(function() {
   // Required init for dropdowns to work.
   $('select').material_select();
 
+  // Required init for dropdowns to work.
+  $(".rotate").rotator();
+
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyDWOzsO-5lWbobwqB0XodtPUEbvHaei6pU",
