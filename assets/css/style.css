@@ -1,21 +1,26 @@
-/* Temporary css for visualizing layout. */
-.layGuide {
-  background: rgba(200, 150, 150, 0.30);
-  border: 1px solid red;
+/* Temporary css for visualizing element relationships. */
 
-}
+  /* Red Div */
+  .layGuide {
+    background: rgba(200, 150, 150, 0.30);
+    border: 1px solid red;
 
-.layGuide1 {
-  background: rgba(150, 150, 200, 0.30);
-  border: 1px solid blue;
+  }
 
-}
+  /* Blue Div */
+  .layGuide1 {
+    background: rgba(150, 150, 200, 0.30);
+    border: 1px solid blue;
 
-.layGuide3 {
-  background: rgba(50, 250, 250, 0.30);
-  border: 1px solid orange;
+  }
 
-}
+  /* Yellow Div */
+  .layGuide3 {
+    background: rgba(50, 250, 250, 0.30);
+    border: 1px solid orange;
+
+  }
+/* ^^^Temporary css for visualizing element relationships.^^^ */
 
 .header-img {
   height: 64px;
