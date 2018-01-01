@@ -46,7 +46,7 @@ $(document).ready(function() {
     });
 
     function processData(petApiData){
-     //Do some stuff with the data
+      
      var results = petApiData.petfinder.pets
 
      for (var i = 0; i < 25; i++) {
@@ -108,7 +108,7 @@ $(document).ready(function() {
 
     // -----------------------------------------------------------
   });
-  
+
 });
 
 //Components that we need in general terms

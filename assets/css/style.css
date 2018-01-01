@@ -113,5 +113,9 @@ h6 {
 }
 
 #topper {
-  margin-top: 100px;
+  margin-top: 90px;
+}
+
+#rotater {
+  margin-top: -15px;
 }
