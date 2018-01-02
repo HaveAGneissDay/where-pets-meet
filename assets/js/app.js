@@ -6,6 +6,9 @@ $(document).ready(function() {
   // Required init for dropdowns to work.
   $(".rotate").rotator();
 
+  // For carousel to work.
+  $('.carousel.carousel-slider').carousel({fullWidth: true});
+
   // For modals to work.
   $('.modal').modal();
 
@@ -106,6 +109,74 @@ $(document).ready(function() {
        // $("#gifSpace").prepend(animalPic);
 
      }
+
+     var animalCardBtn = $("<a />");
+     animalCardBtn.addClass('btn-floating halfway-fab waves-effect waves-light red modal-trigger');
+     animalCardBtn.attr("href", "#modalHeidi");
+     animalCardBtn.attr("id", "describeBtn");
+
+     var animalCardBtnIcon = $("<i />")
+     animalCardBtnIcon.addClass('material-icons');
+     animalCardBtnIcon.text('add');
+
+     $("#describeBtn").append(animalCardBtnIcon);
+
+     var animalCardImg = $("<img />");
+     animalCardImg.attr("src", "http://photos.petfinder.com/photos/pets/37260331/1/?bust=1491274848&width=500&-x.jpg");
+
+     var animalCardTxt = $("<span />");
+     animalCardTxt.addClass('card-title');
+     animalCardTxt.text('Heidi (F) | Menlo Park');
+
+     var animalCardImgContain = $("<div />")
+     animalCardImgContain.addClass('card-image');
+
+     $(".card-image").append(animalCardImg);
+     $(".card-image").append(animalCardTxt);
+     $(".card-image").append(animalCardBtn);
+
+     var animalCardContentContain = $("<div />")
+     animalCardContentContain.addClass('card-content');
+
+     var animalCardPhone = $("<p />")
+     animalCardPhone.text('555-555-1234');
+
+     var animalCardEmail = $("<p />")
+     animalCardEmail.text('tiramisudogrescue@gmail.com');
+
+     $(".card-content").append(animalCardPhone);
+     $(".card-content").append(animalCardEmail);
+
+     var animalCard = $("<div />")
+     animalCard.addClass('card');
+
+     $(".card").append(animalCardImgContain);
+     $(".card").append(animalCardContentContain);
+
+     var animalCardContainer = $("<div />")
+     animalCardContainer.addClass('col s12 m6 l3');
+     animalCardContainer.attr("id", "animalCard");
+
+     $("#animalCard").append(animalCard);
+
+     $("#animalResults").append(animalCardContainer);
+
+
+
+
+     // <div class="col s12 m6 l3">
+     //   <div class="card">
+     //     <div class="card-image">
+     //       <img src="http://photos.petfinder.com/photos/pets/37260331/1/?bust=1491274848&width=500&-x.jpg">
+     //       <span class="card-title">Heidi (F) | Menlo Park</span>
+     //       <a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger" href="#modalHeidi"><i class="material-icons">add</i></a>
+     //     </div>
+     //     <div class="card-content">
+     //       <p>Phone: 555-555-1234</p>
+     //       <p>Email: tiramisudogrescue@gmail.com</p>
+     //     </div>
+     //   </div>
+     // </div>
 
     }
 
