@@ -6,6 +6,9 @@ $(document).ready(function() {
   // Required init for dropdowns to work.
   $(".rotate").rotator();
 
+  // For modals to work.
+  $('.modal').modal();
+
   // -----------------------------------------------------------
 
   // Initialize Firebase
@@ -46,7 +49,7 @@ $(document).ready(function() {
     });
 
     function processData(petApiData){
-      
+
      var results = petApiData.petfinder.pets
 
      for (var i = 0; i < 25; i++) {

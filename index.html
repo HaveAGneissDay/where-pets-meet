@@ -117,7 +117,7 @@
           <label for="zip_code">Zip Code</label>
         </div>
 
-        <button class="btn waves-effect waves-light" type="submit" name="action" id="submit">Pet Me
+        <button data-target="modal1" class="btn waves-effect waves-light modal-trigger" type="submit" name="action" id="submit">Pet Me
           <i class="fas fa-paw right"></i>
         </button>
 
@@ -127,6 +127,17 @@
       <video autoplay loop id="background-video" muted plays-inline>
           <source src="assets/images/placeholder2.mp4" type="video/mp4">
       </video>
+
+      <!-- Modal Structure -->
+      <div id="modal1" class="modal bottom-sheet">
+        <div class="modal-content">
+          <h4>Modal Header</h4>
+          <p>A bunch of text</p>
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div>
+      </div>
 
     </div>
     <!-- Container div end -->
