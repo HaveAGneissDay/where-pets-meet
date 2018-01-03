@@ -134,58 +134,7 @@
           <h4>Modal Header</h4>
 
           <div class="row" id="animalResults">
-            <div class="col s12 m6 l3">
-              <div class="card">
-                <div class="card-image">
-                  <img src="http://photos.petfinder.com/photos/pets/37260331/1/?bust=1491274848&width=500&-x.jpg">
-                  <span class="card-title">Heidi (F) | Menlo Park</span>
-                  <a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger" href="#modalHeidi"><i class="material-icons">add</i></a>
-                </div>
-                <div class="card-content">
-                  <p>Phone: 555-555-1234</p>
-                  <p>Email: tiramisudogrescue@gmail.com</p>
-                </div>
-              </div>
-            </div>
-            <!-- <div class="col s12 m6 l3">
-              <div class="card">
-                <div class="card-image">
-                  <img src="http://photos.petfinder.com/photos/pets/37260331/1/?bust=1491274848&width=500&-x.jpg">
-                  <span class="card-title">Heidi (F) | Menlo Park</span>
-                  <a class="btn-floating halfway-fab waves-effect waves-light red "><i class="material-icons">add</i></a>
-                </div>
-                <div class="card-content">
-                  <p>Phone: 555-555-1234</p>
-                  <p>Email: tiramisudogrescue@gmail.com</p>
-                </div>
-              </div>
-            </div>
-            <div class="col s12 m6 l3">
-              <div class="card">
-                <div class="card-image">
-                  <img src="http://photos.petfinder.com/photos/pets/37260331/1/?bust=1491274848&width=500&-x.jpg">
-                  <span class="card-title">Heidi (F) | Menlo Park</span>
-                  <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
-                </div>
-                <div class="card-content">
-                  <p>Phone: 555-555-1234</p>
-                  <p>Email: tiramisudogrescue@gmail.com</p>
-                </div>
-              </div>
-            </div>
-            <div class="col s12 m6 l3">
-              <div class="card">
-                <div class="card-image">
-                  <img src="http://photos.petfinder.com/photos/pets/37260331/1/?bust=1491274848&width=500&-x.jpg">
-                  <span class="card-title">Heidi (F) | Menlo Park</span>
-                  <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
-                </div>
-                <div class="card-content">
-                  <p>Phone: 555-555-1234</p>
-                  <p>Email: tiramisudogrescue@gmail.com</p>
-                </div>
-              </div>
-            </div> -->
+            <!-- Dynamically generated cards for animals appear here -->
           </div>
 
         </div>
@@ -196,15 +145,21 @@
 
       </div>
 
-      <!-- Modal Structure -->
-      <div id="modalHeidi" class="modal">
-        <div class="modal-content">
-          <h4>Modal Header</h4>
-          <p>A bunch of text</p>
+
+      <div id="modalStorage" style="display: none;">
+        <!-- Dynamically generate modals go here. -->
+
+        <!-- Modal Structure -->
+        <div id="petId00000" class="modal">
+          <div class="modal-content">
+            <h4>Pet Name</h4>
+            <p>Pet Description</p>
+          </div>
+          <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+          </div>
         </div>
-        <div class="modal-footer">
-          <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-        </div>
+        
       </div>
 
     </div>
