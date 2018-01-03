@@ -34,11 +34,11 @@
 
   <body>
 
-    <!-- <nav class="pink" role="navigation">
+    <nav class="pink" role="navigation">
 
       <div class="nav-wrapper container">
       <img class="header-img"  id="logo-container" src="assets/images/logo_hero.png" alt="Pet Me Logo">
-        <a id="logo-container" href="#" class="brand-logo">PET ME</a>
+        <a id="logo-container" href="#" class="brand-logo"></a>
       <ul class="right hide-on-med-and-down">
         <li><a href="#">Contact US</a></li>
       </ul>
@@ -49,7 +49,7 @@
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
       </div>
 
-    </nav> -->
+    </nav>
 
     <!-- Container div start -->
     <div class="container layguide3">
@@ -64,7 +64,7 @@
         <!-- Content Div -->
         <div class="col s10 m8 l8 layguide">
 
-          <img class="responsive-img layguide" src="assets/images/logo1.png" alt="Pet Me Logo">
+          <img class="responsive-img layguide" src="assets/images/logo_hero.png" alt="Pet Me Logo">
           <div id="rotater" class="rotate layguide" data-rotate-interval="1500" data-rotate-animate="bounceIn,bounceOut">
 
             <h1 class="PetClass">Find a playdate for your <span class="rotate-arena bounceIn animated">Cat</span></h1>
@@ -105,6 +105,15 @@
             <option value="dog" data-icon="assets/images/dog.jpeg" class="left circle">Dog</option>
             <option value="cat" data-icon="assets/images/cat.png" class="left circle">Cat</option>
             <option value="horse" data-icon="assets/images/horse.png" class="left circle">Horse</option>
+            <option value="rabbit" data-icon="assets/images/rabbit.jpg" class="left circle">Rabbit</option>
+            <option value="smallfurry" data-icon="assets/images/smallfurry.jpg" class="left circle">Small & Furry</option>
+            <option value="reptile" data-icon="assets/images/reptile.jpg" class="left circle">Scales, Fins & Others</option>
+            <option value="bird" data-icon="assets/images/bird.jpg" class="left circle">Birds</option>
+            <option value="barnyard" data-icon="assets/images/barnyard.png" class="left circle">Barnyard</option>
+
+
+
+
           </select>
         </div>
 
@@ -124,9 +133,10 @@
       </div>
     </div>
 
-      <video autoplay loop id="background-video" muted plays-inline>
-          <source src="assets/images/placeholder2.mp4" type="video/mp4">
-      </video>
+    <!-- //animated background-->
+    <div id="animated-background-wrapper">
+      <video id="animated-background" preload="auto" autoplay="autoplay" loop="loop" style="opacity: 1.5;"><source src="assets/images/placeholder2.mp4" type="video/mp4"></video>
+      </div>
 
       <!-- Modal Structure -->
       <div id="modal1" class="modal bottom-sheet">
@@ -159,7 +169,7 @@
             <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
           </div>
         </div>
-        
+
       </div>
 
     </div>

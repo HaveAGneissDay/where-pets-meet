@@ -58,8 +58,8 @@ h1 {
   position: fixed;
   top: 0;
   left: 0;
-  min-width: 175%;
-  min-height: 175%;
+  min-width: 100%;
+  min-height: 100%;
   width: auto;
   height: auto%;
   z-index: -100;
@@ -90,7 +90,7 @@ h1 {
     height: 200%;
     z-index: -1000;
     min-width: 960px;
-}
+} 
 
 .container {
   /* Adjustments for vertically centering content. */
