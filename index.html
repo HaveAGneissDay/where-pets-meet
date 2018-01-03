@@ -22,10 +22,11 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0"/>
 
-    <link rel="stylesheet" href="assets/css/style.css">
-    <!-- rotator stuff -->
     <link rel="stylesheet" href="assets/css/animate.css">
     <link rel="stylesheet" href="assets/css/rotator.css">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- rotator stuff -->
 
     <script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
 
@@ -33,11 +34,11 @@
 
   <body>
 
-    <nav class="pink" role="navigation">
+    <!-- <nav class="pink" role="navigation">
 
       <div class="nav-wrapper container">
       <img class="header-img"  id="logo-container" src="assets/images/logo_hero.png" alt="Pet Me Logo">
-      <!-- <a id="logo-container" href="#" class="brand-logo">PET ME</a> -->
+        <a id="logo-container" href="#" class="brand-logo">PET ME</a>
       <ul class="right hide-on-med-and-down">
         <li><a href="#">Contact US</a></li>
       </ul>
@@ -48,118 +49,119 @@
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
       </div>
 
-    </nav>
+    </nav> -->
 
     <!-- Container div start -->
-    <div class="container layGuide3">
+    <div class="container layguide3">
 
-      <div class="row layGuide1" id="topper">
-        <!-- Logo Spacers layGuide -->
-        <!-- lets not mentionit is not real -->
-        <!-- <div class="col s12 m12 l12"><p style="color:red;"class="center">This is not a real service. Just a class project.</p></div> -->
-        <!-- Logo Spacers layGuide -->
-        <div class="col s1 m2 l2 layGuide">
-          <!-- Left Logo/Text Spacers layGuide-->
-          <p style="color:white"><strong>RS</strong></p>
+      <div class="row layguide1" id="topper">
+
+        <div class="col s1 m2 l2 layguide">
+          <!-- Left Logo/Text Spacers layguide-->
+          <p class="white-text"><strong>LS</strong></p>
         </div>
 
-        <!-- Logo layGuide or Text Animation-->
-        <div class="col s10 m8 l8 layGuide">
+        <!-- Content Div -->
+        <div class="col s10 m8 l8 layguide">
 
-          <div id="rotater" class="rotate" data-rotate-interval="1500" data-rotate-animate="bounceIn,bounceOut">
+          <img class="responsive-img layguide" src="assets/images/logo1.png" alt="Pet Me Logo">
+          <div id="rotater" class="rotate layguide" data-rotate-interval="1500" data-rotate-animate="bounceIn,bounceOut">
 
-            <h1 class="PetClass">Find a new home for a <span class="rotate-arena bounceIn animated">Cat</span></h1>
+            <h1 class="PetClass">Find a playdate for your <span class="rotate-arena bounceIn animated">Cat</span></h1>
 
             <ul style="display: none;">
                 <!-- <li>Cat</li> -->
                 <li>Dog</li>
+                <li>Cat</li>
                 <li>Rabbit</li>
-                <li>Small & Furry</li>
                 <li>Horse</li>
                 <li>Bird</li>
                 <li>Fish</li>
                 <li>Pig</li>
-                <li>Cat</li>
             </ul>
 
           </div>
 
         </div>
-        <!-- <h1>
-              <strong class="inverted">
-                  <h1 style="text-align: center; font-weight: 100; margin-top: 40px; font-size: 300%;">Find a new home for <span class="rotator">
-        <div class="inner" style="margin-top: -1080px;"><span>Reptile</span><span>Cat</span><span>Parrot</span><span>Iguana</span><span>Snake</span><span>Reptile</span><span>Dog</span><span>Cat</span><span>iPhone 4s</span><span>iPhone 5</span><span>iPhone 5c</span><span>iPhone 5s</span><span>iMac</span><span>Powerbook</span><span>Mac Mini</span><span>Macbook Pro</span><span>Macbook Air</span><span>Macbook</span><span class="any">anything</span></div>
-        <p></p></span></h1> -->
 
-        <!-- //Temp hiding the logo_hero
-
-        <h2 style="text-align: center; font-weight: 100; margin-top: 0px;">Please select your PET</h2>
-          <img class="responsive-img" src="assets/images/logo_hero.png" alt="Pet Me Logo">
-        </div> -->
-
-        <div class="col s1 m2 l2 layGuide">
-          <!-- Right Logo/Text Spacers layGuide-->
-          <p style="color:white"><strong>LS</strong></p>
+        <div class="col s1 m2 l2 layguide">
+          <!-- Right Logo/Text Spacers layguide-->
+          <p class="white-text"><strong>RS</strong></p>
         </div>
 
-        <!-- Div with inputs dropdowns and animal options. layGuide-->
-        <div class="col s12 m12 l12 center layGuide">
+    </div>
 
-          <div class="col s12 m2 center">
-            <h6><strong>I am a</strong></h6>
-          </div>
+    <!-- Div with inputs dropdowns and animal options. layguide-->
+    <div class="row layguide">
+      <div class="col s12 m12 l12 center layguide">
 
-          <div class="input-field col s12 m4">
-            <select class="icons">
-              <option value="" disabled selected>Choose an animal.</option>
-              <option value="dog" data-icon="assets/images/dog.jpeg" class="left circle">Dog</option>
-              <option value="cat" data-icon="assets/images/cat.png" class="left circle">Cat</option>
-            </select>
-          </div>
+        <div class="col s12 m3">
+          <h6 class="white-text"><strong>My pet is seeking a</strong></h6>
+        </div>
 
-          <div class="col s12 m2 center">
-            <h6><strong>seeking a</strong></h6>
-          </div>
+        <div class="input-field col s12 m3 white-text">
+          <select class="icons" id="choiceAnimal">
+            <option value="" disabled selected>Choose an animal.</option>
+            <option value="dog" data-icon="assets/images/dog.jpeg" class="left circle">Dog</option>
+            <option value="cat" data-icon="assets/images/cat.png" class="left circle">Cat</option>
+            <option value="horse" data-icon="assets/images/horse.png" class="left circle">Horse</option>
+          </select>
+        </div>
 
-          <div class="input-field col s12 m4">
-            <select class="icons" id="choiceAnimal">
-              <option value="" disabled selected>Choose an animal.</option>
-              <option value="dog" data-icon="assets/images/dog.jpeg" class="left circle">Dog</option>
-              <option value="cat" data-icon="assets/images/cat.png" class="left circle">Cat</option>
-              <option value="horse" data-icon="assets/images/horse.png" class="left circle">Horse</option>
-            </select>
+        <div class="col s12 m1">
+          <h6 class="white-text"><strong>near</strong></h6>
+        </div>
+
+        <div class="input-field col s4 m2 white-text">
+          <input placeholder="94025" id="zip_code" type="text" class="validate">
+          <label for="zip_code">Zip Code</label>
+        </div>
+
+        <button data-target="modal1" class="btn waves-effect waves-light modal-trigger" type="submit" name="action" id="submit">Pet Me
+          <i class="fas fa-paw right"></i>
+        </button>
+
+      </div>
+    </div>
+
+      <video autoplay loop id="background-video" muted plays-inline>
+          <source src="assets/images/placeholder2.mp4" type="video/mp4">
+      </video>
+
+      <!-- Modal Structure -->
+      <div id="modal1" class="modal bottom-sheet">
+        <div class="modal-content">
+          <h4>Modal Header</h4>
+
+          <div class="row" id="animalResults">
+            <!-- Dynamically generated cards for animals appear here -->
           </div>
 
         </div>
 
-        <!-- Row 2 with Zip and Sumbit. layGuide -->
-        <div class="col s12 m12 l12 center layGuide">
-
-          <div class="col s12 m2 center">
-            <h6><strong>near</strong></h6>
-          </div>
-
-          <div class="input-field col s6">
-            <input placeholder="94025" id="zip_code" type="text" class="validate">
-            <label for="zip_code">Zip Code</label>
-          </div>
-
-          <button class="btn waves-effect waves-light" type="submit" name="action" id="submit">Pet Me
-            <i class="fas fa-paw right"></i>
-          </button>
-
+        <div class="modal-footer">
+          <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
         </div>
 
       </div>
 
-      <video autoplay loop id="background-video" muted plays-inline>
-          <source src="assets/images/cat.mp4" type="video/mp4">
-      </video>
 
-      <!-- //animated background-->
-      <!-- <div id="animated-background-wrapper">
-      <video id="animated-background" preload="auto" autoplay="autoplay" loop="loop" style="opacity: 1.5;"><source src="assets/images/cat.mp4" type="video/mp4"></video>
-      </div> -->
+      <div id="modalStorage" style="display: none;">
+        <!-- Dynamically generate modals go here. -->
+
+        <!-- Modal Structure -->
+        <div id="petId00000" class="modal">
+          <div class="modal-content">
+            <h4>Pet Name</h4>
+            <p>Pet Description</p>
+          </div>
+          <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+          </div>
+        </div>
+        
+      </div>
+
     </div>
     <!-- Container div end -->
 

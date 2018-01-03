@@ -6,6 +6,12 @@ $(document).ready(function() {
   // Required init for dropdowns to work.
   $(".rotate").rotator();
 
+  // For carousel to work.
+  $('.carousel.carousel-slider').carousel({fullWidth: true});
+
+  // For modals to work.
+  $('.modal').modal();
+
   // -----------------------------------------------------------
 
   // Initialize Firebase
@@ -31,7 +37,7 @@ $(document).ready(function() {
     var soughtAnimal = $('#choiceAnimal>option:selected').val().trim();
     console.log(soughtAnimal);
 
-    var queryURL = 'https://api.petfinder.com/pet.find?format=json&key=dd9016ebaee01ff97c4bd3319ee97eaf&animal=' + soughtAnimal + '&location=94025&?count=5&callback=?';
+    var queryURL = 'https://api.petfinder.com/pet.find?format=json&key=dd9016ebaee01ff97c4bd3319ee97eaf&animal=' + soughtAnimal + '&location=' + zipInput + '&?count=5&callback=?';
     console.log(queryURL);
 
     $.ajax({
@@ -46,7 +52,7 @@ $(document).ready(function() {
     });
 
     function processData(petApiData){
-     //Do some stuff with the data
+
      var results = petApiData.petfinder.pets
 
      for (var i = 0; i < 25; i++) {
@@ -55,6 +61,8 @@ $(document).ready(function() {
        // var breed2 = results.pet[i].breeds.breed[1].$t
        var petName = results.pet[i].name.$t
        console.log(petName);
+
+       console.log(results);
 
        var petGender = results.pet[i].sex.$t
        console.log(petGender);
@@ -68,6 +76,9 @@ $(document).ready(function() {
        var aboutPet = results.pet[i].description.$t
        console.log(aboutPet);
 
+       var petAddress = results.pet[i].contact.address1.$t
+       console.log(petAddress);
+
        var petCity = results.pet[i].contact.city.$t
        console.log(petCity);
 
@@ -80,35 +91,96 @@ $(document).ready(function() {
        console.log("--------");
        console.log(petCity+" "+petState+" "+petZipcode);
 
+       var petImgURL = results.pet[i].media.photos.photo[2].$t;
+
        console.log('Image source link:');
-       console.log(results.pet[i].media.photos.photo[2].$t);
+       console.log(petImgURL);
 
        // console.log(breed1);
        // console.log(breed2);
        console.log("____________________");
 
+      var petId = results.pet[i].id.$t;
 
-       // // Creating and storing a div tag
-       // var animalPic = $("<img />");
-       //
-       // // Setting the src attribute of the image to a property pulled off the result item
-       // animalPic.addClass('animalPic img-rounded media-middle');
-       // animalPic.attr("src", results[i].images.fixed_height.url);
-       // animalPic.attr("data-animate", results[i].images.fixed_height.url);
-       // animalPic.attr("data-still", results[i].images.fixed_height_still.url);
-       // animalPic.attr("data-still", results[i].images.fixed_height_still.url);
-       // animalPic.attr("data-state", "animate");
-       //
-       // // Prependng the animalDiv to the HTML page in the "#gifs-appear-here" div
-       // $("#gifSpace").prepend(animalPic);
+      var animalModalId = "petId" + petId
+      console.log(animalModalId);
+
+       var animalCard =  '<div class="col s12 m6 l3">' +
+              '<div class="card">' +
+                '<div class="card-image">' +
+                  '<img src="' + petImgURL + '">' +
+                  '<span class="card-title">'+ petName + ' (' + petGender + ')' + ' | ' + petCity + '</span>' +
+                  '<a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger" id="petInfo" href="#' + animalModalId + '"><i class="material-icons">add</i></a>' +
+                '</div>' +
+                '<div class="card-content">' +
+                  '<p>Phone: ' + petPhone + '</p>' +
+                  '<p>Email: ' + petEmail + '</p>' +
+                  '<iframe ' +
+                   'width="100%"' +
+                   'height="300px"' +
+                   'frameborder="0" style="border:0"' +
+                   'src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBVnpyx6VUOqZt71-xpQox5I19np1HBjig&q=' + petCity + petState + petZipcode + '" allowfullscreen>' +
+                  '</iframe>' +
+                '</div>' +
+              '</div>' +
+            '</div>'
+
+        $('#animalResults').append(animalCard)
 
      }
 
-    }
+     // '<iframe ' +
+     //  'width="600"' +
+     //  'height="450"' +
+     //  'frameborder="0" style="border:0"' +
+     //  'src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDkFbTAnh3rnlQKy21dSKNCfTYV9PRR0_U&q=Space+Needle,Seattle+WA" allowfullscreen>' +
+     // '</iframe>' +
 
+     // <div class="col s12 m6 l3">
+     //   <div class="card">
+     //     <div class="card-image">
+     //       <img src="http://photos.petfinder.com/photos/pets/37260331/1/?bust=1491274848&width=500&-x.jpg">
+     //       <span class="card-title">Heidi (F) | Menlo Park</span>
+     //       <a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger" href="#modalHeidi"><i class="material-icons">add</i></a>
+     //     </div>
+     //     <div class="card-content">
+     //       <p>Phone: 555-555-1234</p>
+     //       <p>Email: tiramisudogrescue@gmail.com</p>
+     //     </div>
+     //   </div>
+     // </div>
+
+    }
     // -----------------------------------------------------------
   });
-  
+
+  // <div id="animalModalId" class="modal">
+  //   <div class="modal-content">
+  //     <h4>Pet Name</h4>
+  //     <p>Pet Description</p>
+  //   </div>
+  //   <div class="modal-footer">
+  //     <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+  //   </div>
+  // </div>
+
+  $("#petInfo").on("click", function() {
+
+      console.log('Button has been clicked.');
+      console.log(animalModalId);
+
+      // var animalModal = '<div id="'+ animalModalId +'" class="modal">'
+      //     <div class="modal-content">
+      //       <h4>Pet Name</h4>
+      //       <p>Pet Description</p>
+      //     </div>
+      //     <div class="modal-footer">
+      //       <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+      //     </div>
+      //   </div>
+
+  });
+
 });
 
 //Components that we need in general terms
