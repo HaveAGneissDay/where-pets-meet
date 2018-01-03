@@ -42,7 +42,7 @@ h2 {
 }
 
 h1 {
-    font-size: 30px;
+    font-size: 26px;
     font-weight: 400;
     color: #fff;
     text-align: center;
@@ -65,8 +65,8 @@ h1 {
   z-index: -100;
 
 /* Adjustments for viewing the nice part of the video. */
-  margin-left: -50px;
-  margin-top: 0px;
+  margin-left: -750px;
+  margin-top: -150px;
 }
 
 
@@ -90,7 +90,7 @@ h1 {
     height: 200%;
     z-index: -1000;
     min-width: 960px;
-}
+} 
 
 .container {
   /* Adjustments for vertically centering content. */
@@ -98,8 +98,8 @@ h1 {
 }
 
 h6 {
-  margin-top: 28px;
-  font-size: 14px;
+  margin-top: 25px;
+  font-size: 18px;
 }
 
 .fa-paw {
@@ -109,11 +109,24 @@ h6 {
 
 #submit {
   margin-top: 20px;
-  margin-left: 11px;
+  margin-left: 20px;
 }
 
 #topper {
-  margin-top: 100px;
+  margin-top: 150px;
+}
+
+#rotater {
+  margin-top: -15px;
+
+}
+
+.white-text {
+  text-shadow: 1px 1px 4px #333;
+}
+
+.modal.bottom-sheet {
+  max-height: 66%;
 }
 
 #map {
