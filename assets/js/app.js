@@ -20,11 +20,11 @@ $(document).ready(function() {
     authDomain: "petproject-ebbc1.firebaseapp.com",
     databaseURL: "https://petproject-ebbc1.firebaseio.com",
     projectId: "petproject-ebbc1",
-    storageBucket: "",
+    storageBucket: "petproject-ebbc1.appspot.com",
     messagingSenderId: "1068542777472"
   };
-
   firebase.initializeApp(config);
+
 
   var database = firebase.database();
 
@@ -55,6 +55,9 @@ $(document).ready(function() {
     function processData(petApiData){
 
      var results = petApiData.petfinder.pets
+
+     $('#zip').append(zipInput)
+
 
      for (var i = 0; i < 25; i++) {
 
@@ -89,9 +92,11 @@ $(document).ready(function() {
        var petZipcode = results.pet[i].contact.zip.$t
        console.log(petZipcode);
 
+
        console.log("--------");
        console.log(petCity+" "+petState+" "+petZipcode);
 
+       var location = (petCity+" "+petState+" "+petZipcode);
        var petImgURL = results.pet[i].media.photos.photo[2].$t;
 
        console.log('Image source link:');
@@ -126,9 +131,10 @@ $(document).ready(function() {
               '</div>' +
             '</div>'
 
-        $('#animalResults').append(animalCard)
 
+        $('#animalResults').append(animalCard)
      }
+
 
      // '<iframe ' +
      //  'width="600"' +
