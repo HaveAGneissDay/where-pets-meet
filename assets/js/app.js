@@ -13,7 +13,12 @@ $(document).ready(function() {
   $('.modal').modal();
 
   // -----------------------------------------------------------
+  var addressPicker = new AddressPicker();
 
+  $('#zip_code').typeahead(null, {
+    displayKey: 'description',
+    source: addressPicker.ttAdapter()
+  });
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyDWOzsO-5lWbobwqB0XodtPUEbvHaei6pU",
@@ -27,6 +32,19 @@ $(document).ready(function() {
 
 
   var database = firebase.database();
+
+  // GOOGLE MAPS AUTOCOMPLETE
+function autocompleteLocations() {
+    let input = document.getElementById('search_form--location');
+    let opts = {
+        types: ['(cities)']
+      };
+    let autocomplete = new google.maps.places.Autocomplete(input, opts);
+    autocomplete.setComponentRestrictions(
+        {'country': 'us'});
+};
+console.log(autocompleteLocations);
+
 
 
   $("#submit").on("click", function() {
