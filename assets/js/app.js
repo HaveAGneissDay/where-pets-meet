@@ -7,7 +7,9 @@ $(document).ready(function() {
   $(".rotate").rotator();
 
   // For carousel to work.
-  $('.carousel.carousel-slider').carousel({fullWidth: true});
+  $('.carousel.carousel-slider').carousel({
+    fullWidth: true
+  });
 
   // For modals to work.
   $('.modal').modal();
@@ -35,12 +37,12 @@ $(document).ready(function() {
 
 
 
-
+  var zipInput;
 
   $("#submit").on("click", function() {
 
     // -----------------------------------------------------------
-    var zipInput = $('#zip_code').val().trim()
+    zipInput = $('#zip_code').val().trim()
     console.log(zipInput);
 
     var soughtAnimal = $('#choiceAnimal>option:selected').val().trim();
@@ -55,12 +57,12 @@ $(document).ready(function() {
       processData: true,
       data: {},
       dataType: "json",
-      success: function (petApiData) {
+      success: function(petApiData) {
         processData(petApiData);
       }
     });
 
-    function processData(petApiData){
+    function processData(petApiData) {
 
       var results = petApiData.petfinder.pets
 
@@ -102,9 +104,9 @@ $(document).ready(function() {
 
 
         console.log("--------");
-        console.log(petCity+" "+petState+" "+petZipcode);
+        console.log(petCity + " " + petState + " " + petZipcode);
 
-        var location = (petCity+" "+petState+" "+petZipcode);
+        var location = (petCity + " " + petState + " " + petZipcode);
         var petImgURL = results.pet[i].media.photos.photo[2].$t;
 
         console.log('Image source link:');
@@ -120,7 +122,7 @@ $(document).ready(function() {
         console.log(animalModalId);
 
         function filterEmailResults(results) {
-          if(!results.pet[i].contact.email || !('$t' in results.pet[i].contact.email)) {
+          if (!results.pet[i].contact.email || !('$t' in results.pet[i].contact.email)) {
             return `<span class="noEmail">Email Not Available</span>`;
           } else {
             return `<a href="mailto:${results.pet[i].contact.email.$t}" class="email">${results.pet[i].contact.email.$t}</a>`;
@@ -128,7 +130,7 @@ $(document).ready(function() {
         };
 
         function filterPhoneResults(results) {
-          if(!('$t' in results.pet[i].contact.phone)) {
+          if (!('$t' in results.pet[i].contact.phone)) {
             return 'Phone Number Not Available';
           } else {
             return `${results.pet[i].contact.phone.$t}`;
@@ -137,25 +139,25 @@ $(document).ready(function() {
         var email = filterEmailResults(results);
         var phone = filterPhoneResults(results);
 
-        var animalCard =  '<div class="col s12 m6 l3">' +
-        '<div class="card">' +
-        '<div class="card-image">' +
-        '<img src="' + petImgURL + '">' +
-        '<span class="card-title">'+ petName + ' (' + petGender + ')' + ' | ' + petCity + '</span>' +
-        '<a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger" id="petInfo" href="#' + animalModalId + '"><i class="material-icons">add</i></a>' +
-        '</div>' +
-        '<div class="card-content">' +
-        '<p>Phone: ' + phone + '</p>' +
-        '<p>Email: ' + email + '</p>' +
-        '<iframe ' +
-        'width="100%"' +
-        'height="300px"' +
-        'frameborder="0" style="border:0"' +
-        'src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBVnpyx6VUOqZt71-xpQox5I19np1HBjig&q=' + petCity + petState + petZipcode + '" allowfullscreen>' +
-        '</iframe>' +
-        '</div>' +
-        '</div>' +
-        '</div>'
+        var animalCard = '<div class="col s12 m6 l3">' +
+          '<div class="card">' +
+          '<div class="card-image">' +
+          '<img src="' + petImgURL + '">' +
+          '<span class="card-title">' + petName + ' (' + petGender + ')' + ' | ' + petCity + '</span>' +
+          '<a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger" id="petInfo" href="#' + animalModalId + '"><i class="material-icons">add</i></a>' +
+          '</div>' +
+          '<div class="card-content">' +
+          '<p>Phone: ' + phone + '</p>' +
+          '<p>Email: ' + email + '</p>' +
+          '<iframe ' +
+          'width="100%"' +
+          'height="300px"' +
+          'frameborder="0" style="border:0"' +
+          'src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBVnpyx6VUOqZt71-xpQox5I19np1HBjig&q=' + petCity + petState + petZipcode + '" allowfullscreen>' +
+          '</iframe>' +
+          '</div>' +
+          '</div>' +
+          '</div>'
 
 
         $('#animalResults').append(animalCard)
@@ -187,67 +189,70 @@ $(document).ready(function() {
     // -----------------------------------------------------------
   });
 
-<<<<<<< HEAD
-      var queryURL2 = "https://maps.googleapis.com/maps/api/geocode/json?address=" + zipInput + "&key=AIzaSyANo9S84eZ7PVyuKP2DSVE4wOawDLvocSE";
 
-      $.ajax({
-          url: queryURL2,
-          method: "GET",
-          success: function(response) {
-              // response goes here
+  var queryURL2 = "https://maps.googleapis.com/maps/api/geocode/json?address=" + zipInput + "&key=AIzaSyANo9S84eZ7PVyuKP2DSVE4wOawDLvocSE";
 
-              console.log(response)
-              console.log("-----------------------")
-              console.log(response.results[0].geometry.location.lat)
-              console.log(response.results[0].geometry.location.lng)
-              latitude = response.results[0].geometry.location.lat;
-              longitude = response.results[0].geometry.location.lng;
-          }
-      });
+  $.ajax({
+    url: queryURL2,
+    method: "GET",
+    success: function(response) {
+      // response goes here
 
-      var map;
-      var infowindow;
-      var longitude;
-      var latitude;
+      console.log(response)
+      console.log("-----------------------")
+      console.log(response.results[0].geometry.location.lat)
+      console.log(response.results[0].geometry.location.lng)
+      latitude = response.results[0].geometry.location.lat;
+      longitude = response.results[0].geometry.location.lng;
+    }
+  });
 
-      function initMap() {
-        var newArea = {lat: latitude, lng: longitude};
+  var map;
+  var infowindow;
+  var longitude;
+  var latitude;
 
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: newArea,
-          zoom: 15
-        });
+  function initMap() {
+    var newArea = {
+      lat: latitude,
+      lng: longitude
+    };
 
-        infowindow = new google.maps.InfoWindow();
-        var service = new google.maps.places.PlacesService(map);
-        service.nearbySearch({
-          location: newArea,
-          radius: 500,
-          type: ['park']
-        }, callback);
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: newArea,
+      zoom: 15
+    });
+
+    infowindow = new google.maps.InfoWindow();
+    var service = new google.maps.places.PlacesService(map);
+    service.nearbySearch({
+      location: newArea,
+      radius: 500,
+      type: ['park']
+    }, callback);
+  }
+
+  function callback(results, status) {
+    if (status === google.maps.places.PlacesServiceStatus.OK) {
+      for (var i = 0; i < results.length; i++) {
+        createMarker(results[i]);
       }
+    }
+  }
 
-      function callback(results, status) {
-        if (status === google.maps.places.PlacesServiceStatus.OK) {
-          for (var i = 0; i < results.length; i++) {
-            createMarker(results[i]);
-          }
-        }
-      }
+  function createMarker(place) {
+    var placeLoc = place.geometry.location;
+    var marker = new google.maps.Marker({
+      map: map,
+      position: place.geometry.location
+    });
 
-      function createMarker(place) {
-        var placeLoc = place.geometry.location;
-        var marker = new google.maps.Marker({
-          map: map,
-          position: place.geometry.location
-        });
+    google.maps.event.addListener(marker, 'click', function() {
+      infowindow.setContent(place.name);
+      infowindow.open(map, this);
+    });
+  }
 
-        google.maps.event.addListener(marker, 'click', function() {
-          infowindow.setContent(place.name);
-          infowindow.open(map, this);
-        });
-      }
-=======
   // <div id="animalModalId" class="modal">
   //   <div class="modal-content">
   //     <h4>Pet Name</h4>
@@ -274,8 +279,8 @@ $(document).ready(function() {
     //   </div>
 
   });
->>>>>>> ce8e854e6879e6b4f9da27311ab0006f29ecdbb4
-
+  // >>>>>>> ce8e854e6879e6b4f9da27311ab0006f29ecdbb4
+  //
 });
 
 //Components that we need in general terms
