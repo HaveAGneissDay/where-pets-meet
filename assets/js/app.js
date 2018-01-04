@@ -41,12 +41,21 @@ $(document).ready(function() {
 
   $("#submit").on("click", function() {
 
+    event.preventDefault();
+
     // -----------------------------------------------------------
     zipInput = $('#zip_code').val().trim()
     console.log(zipInput);
 
     var soughtAnimal = $('#choiceAnimal>option:selected').val().trim();
     console.log(soughtAnimal);
+
+    var newSearch = {
+      newPet: soughtAnimal,
+      newZipInput: zipInput
+    }
+
+    database.ref().push(newSearch);
 
     var queryURL = 'https://api.petfinder.com/pet.find?format=json&key=dd9016ebaee01ff97c4bd3319ee97eaf&animal=' + soughtAnimal + '&location=' + zipInput + '&?count=5&callback=?';
     console.log(queryURL);
