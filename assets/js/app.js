@@ -39,6 +39,10 @@ $(document).ready(function() {
 
   $("#submit").on("click", function() {
 
+
+
+    $('#animalResults').html('')
+
     // -----------------------------------------------------------
     var zipInput = $('#zip_code').val().trim()
     console.log(zipInput);
@@ -64,7 +68,9 @@ $(document).ready(function() {
 
       var results = petApiData.petfinder.pets
 
-      $('#zip').append(zipInput)
+      $('#modalTitle').html(
+        'Showing ' + soughtAnimal + 's ' + 'near '+ zipInput
+      )
 
 
       for (var i = 0; i < 25; i++) {
@@ -121,7 +127,7 @@ $(document).ready(function() {
 
         function filterEmailResults(results) {
           if(!results.pet[i].contact.email || !('$t' in results.pet[i].contact.email)) {
-            return `<span class="noEmail">Email Not Available</span>`;
+            return `<span class="noEmail">None Provided</span>`;
           } else {
             return `<a href="mailto:${results.pet[i].contact.email.$t}" class="email">${results.pet[i].contact.email.$t}</a>`;
           };
@@ -129,7 +135,7 @@ $(document).ready(function() {
 
         function filterPhoneResults(results) {
           if(!('$t' in results.pet[i].contact.phone)) {
-            return 'Phone Number Not Available';
+            return 'None Provided';
           } else {
             return `${results.pet[i].contact.phone.$t}`;
           };
@@ -138,21 +144,21 @@ $(document).ready(function() {
         var phone = filterPhoneResults(results);
 
         var animalCard =  '<div class="col s12 m6 l3">' +
-        '<div class="card">' +
+        '<div class="card medium">' +
         '<div class="card-image">' +
         '<img src="' + petImgURL + '">' +
-        '<span class="card-title">'+ petName + ' (' + petGender + ')' + ' | ' + petCity + '</span>' +
+        '<span class="card-title">'+ petName + ' (' + petGender + ')' + '<br>' + petCity + '</span>' +
         '<a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger" id="petInfo" href="#' + animalModalId + '"><i class="material-icons">add</i></a>' +
         '</div>' +
         '<div class="card-content">' +
         '<p>Phone: ' + phone + '</p>' +
         '<p>Email: ' + email + '</p>' +
-        '<iframe ' +
-        'width="100%"' +
-        'height="300px"' +
-        'frameborder="0" style="border:0"' +
-        'src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBVnpyx6VUOqZt71-xpQox5I19np1HBjig&q=' + petCity + petState + petZipcode + '" allowfullscreen>' +
-        '</iframe>' +
+        // '<iframe ' +
+        // 'width="100%"' +
+        // 'height="300px"' +
+        // 'frameborder="0" style="border:0"' +
+        // 'src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBVnpyx6VUOqZt71-xpQox5I19np1HBjig&q=' + petCity + petState + petZipcode + '" allowfullscreen>' +
+        // '</iframe>' +
         '</div>' +
         '</div>' +
         '</div>'
