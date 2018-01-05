@@ -34,7 +34,7 @@ h2 {
     font-size: 1.56rem;
     font-weight: 400;
     text-align: center;
-    text-shadow: 0 0 4px #666;
+    /* text-shadow: 0 0 4px #666; */
     line-height: 250%;
     color: #fff;
     padding-bottom: 10px;
@@ -46,7 +46,7 @@ h1 {
     font-weight: 400;
     color: #fff;
     text-align: center;
-    text-shadow: 0 0 4px #666;
+    /* text-shadow: 0 0 4px #666; */
     padding-bottom: 10px;
     /* line-height: 110%; */
     /* color: antiquewhite; */
@@ -90,7 +90,7 @@ h1 {
     height: 200%;
     z-index: -1000;
     min-width: 960px;
-} 
+}
 
 .container {
   /* Adjustments for vertically centering content. */
@@ -122,12 +122,13 @@ h6 {
 }
 
 .white-text {
-  text-shadow: 1px 1px 4px #333;
+  /* text-shadow: 1px 1px 4px #333; */
 }
 
 .modal.bottom-sheet {
   max-height: 66%;
 }
+
 
 #map {
   height: 500px;
@@ -137,4 +138,9 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
+}
+
+span .card-title {
+  font-weight: 600;
+
 }

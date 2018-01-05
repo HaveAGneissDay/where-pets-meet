@@ -41,7 +41,13 @@ $(document).ready(function() {
 
   $("#submit").on("click", function() {
 
+
     event.preventDefault();
+
+
+
+    $('#animalResults').html('')
+
 
     // -----------------------------------------------------------
     zipInput = $('#zip_code').val().trim()
@@ -76,7 +82,9 @@ $(document).ready(function() {
 
       var results = petApiData.petfinder.pets
 
-      $('#zip').append(zipInput)
+      $('#modalTitle').html(
+        'Showing ' + soughtAnimal + 's ' + 'near '+ zipInput
+      )
 
 
       for (var i = 0; i < 25; i++) {
@@ -132,16 +140,20 @@ $(document).ready(function() {
         console.log(animalModalId);
 
         function filterEmailResults(results) {
+
           if (!results.pet[i].contact.email || !('$t' in results.pet[i].contact.email)) {
             return `<span class="noEmail">Email Not Available</span>`;
+
           } else {
             return `<a href="mailto:${results.pet[i].contact.email.$t}" class="email">${results.pet[i].contact.email.$t}</a>`;
           };
         };
 
         function filterPhoneResults(results) {
+
           if (!('$t' in results.pet[i].contact.phone)) {
             return 'Phone Number Not Available';
+
           } else {
             return `${results.pet[i].contact.phone.$t}`;
           };
@@ -168,6 +180,7 @@ $(document).ready(function() {
           '</div>' +
           '</div>' +
           '</div>'
+
 
 
         $('#animalResults').append(animalCard)
