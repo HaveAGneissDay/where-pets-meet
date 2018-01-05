@@ -47,9 +47,10 @@ $(document).ready(function() {
     zipInput = $('#zip_code').val().trim()
     console.log(zipInput);
 
+ $('#zip_code').val("");
     var soughtAnimal = $('#choiceAnimal>option:selected').val().trim();
     console.log(soughtAnimal);
-
+    $('#choiceAnimal>option:selected').val("")
     var newSearch = {
       newPet: soughtAnimal,
       newZipInput: zipInput
