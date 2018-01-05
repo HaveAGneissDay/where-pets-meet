@@ -132,3 +132,7 @@ h6 {
 span .card-title {
   font-weight: 600;
 }
+
+.halfway-fab {
+  top: 22px !important;
+}

@@ -144,22 +144,36 @@ $(document).ready(function() {
         var phone = filterPhoneResults(results);
 
         var animalCard =  '<div class="col s12 m6 l3">' +
-        '<div class="card medium">' +
+        '<div class="card medium sticky-action">' +
         '<div class="card-image">' +
-        '<img src="' + petImgURL + '">' +
+        '<img class="activator" src="' + petImgURL + '">' +
         '<span class="card-title">'+ petName + ' (' + petGender + ')' + '<br>' + petCity + '</span>' +
-        '<a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger" id="petInfo" href="#' + animalModalId + '"><i class="material-icons">add</i></a>' +
+        // '<a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger" id="petInfo" href="#' + animalModalId + '"><i class="material-icons">add</i></a>' +
+        '<a class="btn-floating btn-large waves-effect halfway-fab waves-light red"><i class="material-icons">add</i></a>' +
         '</div>' +
-        '<div class="card-content">' +
-        '<p>Phone: ' + phone + '</p>' +
-        '<p>Email: ' + email + '</p>' +
-        // '<iframe ' +
-        // 'width="100%"' +
-        // 'height="300px"' +
-        // 'frameborder="0" style="border:0"' +
-        // 'src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBVnpyx6VUOqZt71-xpQox5I19np1HBjig&q=' + petCity + petState + petZipcode + '" allowfullscreen>' +
-        // '</iframe>' +
-        '</div>' +
+          '<div class="card-content">' +
+          '<p>Phone: ' + phone + '</p>' +
+          '<p>Email: ' + email + '</p>' +
+          // '<iframe ' +
+          // 'width="100%"' +
+          // 'height="300px"' +
+          // 'frameborder="0" style="border:0"' +
+          // 'src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBVnpyx6VUOqZt71-xpQox5I19np1HBjig&q=' + petCity + petState + petZipcode + '" allowfullscreen>' +
+          // '</iframe>' +
+          '</div>' +
+          '<div class="card-action">' +
+            '<a class="activator" href="#">See more...</a>' +
+          '</div>' +
+          '<div class="card-reveal">' +
+          '<span class="card-title grey-text text-darken-4">' + petName + '<i class="material-icons right">close</i></span>' +
+          '<p>' + aboutPet + '</p>' +
+            '<iframe ' +
+            'width="100%"' +
+            'height="300px"' +
+            'frameborder="0" style="border:0"' +
+            'src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBVnpyx6VUOqZt71-xpQox5I19np1HBjig&q=' + petCity + petState + petZipcode + '" allowfullscreen>' +
+            '</iframe>' +
+          '</div>' +
         '</div>' +
         '</div>'
 
