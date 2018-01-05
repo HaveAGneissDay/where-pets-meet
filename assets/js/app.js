@@ -304,6 +304,35 @@ $(document).ready(function() {
   });
   // >>>>>>> ce8e854e6879e6b4f9da27311ab0006f29ecdbb4
   //
+
+  $( When button is clicked).on("click", function () {
+    var saveResult = {
+      savePetName: petName,
+      savePetGender: petGender,
+      savePetPhone: petPhone,
+      savePetEmail: petEmail,
+      savePetAbout: aboutPet,
+      savePetAddress: petAddress,
+      savePetCity: petCity,
+      savePetState: petState,
+      savePetZipcode: petZipcode,
+      savePetImgUrl: petImgURL
+    }
+    database.ref().push(saveResult);
+  })
+
+  database.ref().on("value", function(snapshot) {
+    petName = snapshot.savePetName.val();
+    petGender = snapshot.savePetGender.val();
+    petPhone = snapshot.savePetPhone.val();
+    petEmail = snapshot.savePetEmail.val();
+    petAbout = snapshot.savePetAbout.val();
+    petAddress = snapshot.savePetAdress.val();
+    petCity = snapshot.savePetCity.val();
+    petState= snapshot.savePetState.val();
+    petZipCode = snapshot.savePetZipcode.val();
+    petIngUrl = snapshot.savePetImgUrl.val();
+  })
 });
 
 //Components that we need in general terms
