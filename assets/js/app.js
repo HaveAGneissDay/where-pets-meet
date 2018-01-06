@@ -151,7 +151,7 @@ $(document).ready(function() {
         '<img class="activator" src="' + petImgURL + '">' +
         '<span class="card-title" id="txtCustom">'+ petName + ' (' + petGender + ')' + '<br>' + petCity + '</span>' +
         // '<a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger" id="petInfo" href="#' + animalModalId + '"><i class="material-icons">add</i></a>' +
-        '<a class="btn-floating btn-large waves-effect halfway-fab waves-light red"><i class="material-icons">add</i></a>' +
+        '<a class="btn-floating btn-large waves-effect halfway-fab waves-light red petFav"><i class="material-icons">add</i></a>' +
         '</div>' +
           '<div class="card-content">' +
           '<p>Phone: ' + phone + '</p>' +
@@ -217,25 +217,14 @@ $(document).ready(function() {
   //   </div>
   // </div>
 
-  $("#petInfo").on("click", function() {
+
+
+
+  $(document).on("click",".petFav", function() {
 
     console.log('Button has been clicked.');
-    console.log(animalModalId);
-
-    // var animalModal = '<div id="'+ animalModalId +'" class="modal">'
-    //     <div class="modal-content">
-    //       <h4>Pet Name</h4>
-    //       <p>Pet Description</p>
-    //     </div>
-    //     <div class="modal-footer">
-    //       <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-    //     </div>
-    //   </div>
 
   });
-
-
-
 
 });
 
