@@ -12,8 +12,6 @@ $(document).ready(function() {
   // For modals to work.
   $('.modal').modal();
 
-  $('.collapsible').collapsible();
-
   // -----------------------------------------------------------
   var addressPicker = new AddressPicker();
 
@@ -180,7 +178,7 @@ $(document).ready(function() {
         '</div>'
 
         $('#animalResults').append(animalCard);
-      }
+
 
       // '<iframe ' +
       //  'width="600"' +
@@ -233,16 +231,8 @@ $(document).ready(function() {
     //   </div>
 
   });
-<<<<<<< HEAD
-=======
-
->>>>>>> parent of 9c19e38... Merge branch 'master' of https://github.com/enochwu/where-pets-meet
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> michael fixes things
 
 });
 
