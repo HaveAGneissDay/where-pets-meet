@@ -241,7 +241,6 @@ $(document).ready(function() {
     //   </div>
 
   });
-  let testing = []
 
 
 });
