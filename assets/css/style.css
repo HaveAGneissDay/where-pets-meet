@@ -7,6 +7,12 @@
 
   }
 
+  .section {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 2rem !important;
+}
+
   /* Blue Div */
   .layGuide1 {
     background: rgba(150, 150, 200, 0.30);
