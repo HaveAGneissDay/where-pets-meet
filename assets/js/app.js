@@ -50,135 +50,143 @@ $(document).ready(function() {
     var soughtAnimal = $('#choiceAnimal>option:selected').val().trim();
     console.log(soughtAnimal);
 
-    var queryURL = 'https://api.petfinder.com/pet.find?format=json&key=dd9016ebaee01ff97c4bd3319ee97eaf&animal=' + soughtAnimal + '&location=' + zipInput + '&?count=5&callback=?';
-    console.log(queryURL);
 
-    $.ajax({
-      type: 'GET',
-      url: queryURL,
-      processData: true,
-      data: {},
-      dataType: "json",
-      success: function (petApiData) {
-        processData(petApiData);
-      }
-    });
+    if ((zipInput == "") && (soughtAnimal == "")) {
 
-    function processData(petApiData){
+        alert('Please fill out all the fields.')
 
-      var results = petApiData.petfinder.pets
+    } else {
 
-      $('#modalTitle').html(
-        'Showing ' + soughtAnimal + 's ' + 'near '+ zipInput
-      )
+      var queryURL = 'https://api.petfinder.com/pet.find?format=json&key=dd9016ebaee01ff97c4bd3319ee97eaf&animal=' + soughtAnimal + '&location=' + zipInput + '&?count=5&callback=?';
+      console.log(queryURL);
 
+      $.ajax({
+        type: 'GET',
+        url: queryURL,
+        processData: true,
+        data: {},
+        dataType: "json",
+        success: function (petApiData) {
+          processData(petApiData);
+        }
+      });
 
-      for (var i = 0; i < 25; i++) {
+      function processData(petApiData){
 
-        // var breed1 = results.pet[i].breeds.breed[0].$t
-        // var breed2 = results.pet[i].breeds.breed[1].$t
-        var petName = results.pet[i].name.$t
-        console.log(petName);
+        var results = petApiData.petfinder.pets
 
-        console.log(results);
-
-        var petGender = results.pet[i].sex.$t
-        console.log(petGender);
-
-        var petPhone = results.pet[i].contact.phone.$t
-        console.log(petPhone);
-
-        var petEmail = results.pet[i].contact.email.$t
-        console.log(petEmail);
-
-        var aboutPet = results.pet[i].description.$t
-        console.log(aboutPet);
-
-        var petAddress = results.pet[i].contact.address1.$t
-        console.log(petAddress);
-
-        var petCity = results.pet[i].contact.city.$t
-        console.log(petCity);
-
-        var petState = results.pet[i].contact.state.$t
-        console.log(petState);
-
-        var petZipcode = results.pet[i].contact.zip.$t
-        console.log(petZipcode);
+        $('#modalTitle').html(
+          'Showing ' + soughtAnimal + 's ' + 'near '+ zipInput
+        )
 
 
-        console.log("--------");
-        console.log(petCity+" "+petState+" "+petZipcode);
+        for (var i = 0; i < 25; i++) {
 
-        var location = (petCity+" "+petState+" "+petZipcode);
-        var petImgURL = results.pet[i].media.photos.photo[2].$t;
+          // var breed1 = results.pet[i].breeds.breed[0].$t
+          // var breed2 = results.pet[i].breeds.breed[1].$t
+          var petName = results.pet[i].name.$t
+          console.log(petName);
 
-        console.log('Image source link:');
-        console.log(petImgURL);
+          console.log(results);
 
-        // console.log(breed1);
-        // console.log(breed2);
-        console.log("____________________");
+          var petGender = results.pet[i].sex.$t
+          console.log(petGender);
 
-        var petId = results.pet[i].id.$t;
+          var petPhone = results.pet[i].contact.phone.$t
+          console.log(petPhone);
 
-        var animalModalId = "petId" + petId
-        console.log(animalModalId);
+          var petEmail = results.pet[i].contact.email.$t
+          console.log(petEmail);
 
-        function filterEmailResults(results) {
-          if(!results.pet[i].contact.email || !('$t' in results.pet[i].contact.email)) {
-            return `<span class="noEmail">None Provided</span>`;
-          } else {
-            return `<a href="mailto:${results.pet[i].contact.email.$t}" class="email">${results.pet[i].contact.email.$t}</a>`;
+          var aboutPet = results.pet[i].description.$t
+          console.log(aboutPet);
+
+          var petAddress = results.pet[i].contact.address1.$t
+          console.log(petAddress);
+
+          var petCity = results.pet[i].contact.city.$t
+          console.log(petCity);
+
+          var petState = results.pet[i].contact.state.$t
+          console.log(petState);
+
+          var petZipcode = results.pet[i].contact.zip.$t
+          console.log(petZipcode);
+
+
+          console.log("--------");
+          console.log(petCity+" "+petState+" "+petZipcode);
+
+          var location = (petCity+" "+petState+" "+petZipcode);
+          var petImgURL = results.pet[i].media.photos.photo[2].$t;
+
+          console.log('Image source link:');
+          console.log(petImgURL);
+
+          // console.log(breed1);
+          // console.log(breed2);
+          console.log("____________________");
+
+          var petId = results.pet[i].id.$t;
+
+          var animalModalId = "petId" + petId
+          console.log(animalModalId);
+
+          function filterEmailResults(results) {
+            if(!results.pet[i].contact.email || !('$t' in results.pet[i].contact.email)) {
+              return `<span class="noEmail">None Provided</span>`;
+            } else {
+              return `<a href="mailto:${results.pet[i].contact.email.$t}" class="email">${results.pet[i].contact.email.$t}</a>`;
+            };
           };
-        };
 
-        function filterPhoneResults(results) {
-          if(!('$t' in results.pet[i].contact.phone)) {
-            return 'None Provided';
-          } else {
-            return `${results.pet[i].contact.phone.$t}`;
+          function filterPhoneResults(results) {
+            if(!('$t' in results.pet[i].contact.phone)) {
+              return 'None Provided';
+            } else {
+              return `${results.pet[i].contact.phone.$t}`;
+            };
           };
-        };
-        var email = filterEmailResults(results);
-        var phone = filterPhoneResults(results);
+          var email = filterEmailResults(results);
+          var phone = filterPhoneResults(results);
 
-        var animalCard =  '<div class="col s12 m6 l3">' +
-        '<div class="card medium sticky-action">' +
-        '<div class="card-image" id="imgCustom" >' +
-        '<img class="activator" src="' + petImgURL + '">' +
-        '<span class="card-title" id="txtCustom">'+ petName + ' (' + petGender + ')' + '<br>' + petCity + '</span>' +
-        // '<a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger" id="petInfo" href="#' + animalModalId + '"><i class="material-icons">add</i></a>' +
-        '<a class="btn-floating btn-large waves-effect halfway-fab waves-light red"><i class="material-icons">add</i></a>' +
-        '</div>' +
-          '<div class="card-content">' +
-          '<p>Phone: ' + phone + '</p>' +
-          '<p>Email: ' + email + '</p>' +
-          // '<iframe ' +
-          // 'width="100%"' +
-          // 'height="300px"' +
-          // 'frameborder="0" style="border:0"' +
-          // 'src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBVnpyx6VUOqZt71-xpQox5I19np1HBjig&q=' + petCity + petState + petZipcode + '" allowfullscreen>' +
-          // '</iframe>' +
+          var animalCard =  '<div class="col s12 m6 l3">' +
+          '<div class="card medium sticky-action">' +
+          '<div class="card-image" id="imgCustom" >' +
+          '<img class="activator" src="' + petImgURL + '">' +
+          '<span class="card-title" id="txtCustom">'+ petName + ' (' + petGender + ')' + '<br>' + petCity + '</span>' +
+          // '<a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger" id="petInfo" href="#' + animalModalId + '"><i class="material-icons">add</i></a>' +
+          '<a class="btn-floating btn-large waves-effect halfway-fab waves-light red" id"plusBtn"><i class="material-icons">add</i></a>' +
           '</div>' +
-          '<div class="card-action">' +
-            '<a class="activator" href="#">Read more...</a>' +
+            '<div class="card-content">' +
+            '<p>Phone: ' + phone + '</p>' +
+            '<p>Email: ' + email + '</p>' +
+            // '<iframe ' +
+            // 'width="100%"' +
+            // 'height="300px"' +
+            // 'frameborder="0" style="border:0"' +
+            // 'src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBVnpyx6VUOqZt71-xpQox5I19np1HBjig&q=' + petCity + petState + petZipcode + '" allowfullscreen>' +
+            // '</iframe>' +
+            '</div>' +
+            '<div class="card-action">' +
+              '<a class="activator" href="#">Read more...</a>' +
+            '</div>' +
+            '<div class="card-reveal">' +
+            '<span class="card-title grey-text text-darken-4">' + petName + '<i class="material-icons right">close</i></span>' +
+            '<p>' + aboutPet + '</p>' +
+              '<iframe ' +
+              'width="100%"' +
+              'height="300px"' +
+              'frameborder="0" style="border:0"' +
+              'src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBVnpyx6VUOqZt71-xpQox5I19np1HBjig&q=' + petCity + petState + petZipcode + '" allowfullscreen>' +
+              '</iframe>' +
+            '</div>' +
           '</div>' +
-          '<div class="card-reveal">' +
-          '<span class="card-title grey-text text-darken-4">' + petName + '<i class="material-icons right">close</i></span>' +
-          '<p>' + aboutPet + '</p>' +
-            '<iframe ' +
-            'width="100%"' +
-            'height="300px"' +
-            'frameborder="0" style="border:0"' +
-            'src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBVnpyx6VUOqZt71-xpQox5I19np1HBjig&q=' + petCity + petState + petZipcode + '" allowfullscreen>' +
-            '</iframe>' +
-          '</div>' +
-        '</div>' +
-        '</div>'
+          '</div>'
 
 
-        $('#animalResults').append(animalCard)
+          $('#animalResults').append(animalCard)
+        }
       }
 
 
@@ -237,6 +245,11 @@ $(document).ready(function() {
 
 
 });
+
+// Add favoriting functionality
+// Integrated pinned maps
+// Change genders to symbols
+// fix empty input bug
 
 //Components that we need in general terms
 // What should appear when the page opens. Dynamically generated
