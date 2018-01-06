@@ -69,7 +69,6 @@ $(document).ready(function() {
           'Showing ' + soughtAnimal + 's ' + 'near '+ zipInput
         )
 
-
         for (var i = 0; i < 25; i++) {
 
           // var breed1 = results.pet[i].breeds.breed[0].$t
