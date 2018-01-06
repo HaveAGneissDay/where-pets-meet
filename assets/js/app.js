@@ -63,8 +63,8 @@ $(document).ready(function() {
     }
 
     database.ref().push(newSearch);
+});
 
-<<<<<<< HEAD
     var queryURL = 'https://api.petfinder.com/pet.find?format=json&key=dd9016ebaee01ff97c4bd3319ee97eaf&animal=' + soughtAnimal + '&location=' + zipInput + '&?count=5&callback=?';
     console.log(queryURL);
 
@@ -80,13 +80,14 @@ $(document).ready(function() {
     });
 
     function processData(petApiData) {
-=======
+
 
     if ((zipInput == "") && (soughtAnimal == "")) {
 
         alert('Please fill out all the fields.')
 
-    } else {
+    }
+  } 
 
       var queryURL = 'https://api.petfinder.com/pet.find?format=json&key=dd9016ebaee01ff97c4bd3319ee97eaf&animal=' + soughtAnimal + '&location=' + zipInput + '&?count=5&callback=?';
       console.log(queryURL);
@@ -101,7 +102,7 @@ $(document).ready(function() {
           processData(petApiData);
         }
       });
->>>>>>> d0404277d6b079b91a9ecfb5432248db3bc7c8e3
+
 
       function processData(petApiData){
 
@@ -145,17 +146,16 @@ $(document).ready(function() {
           var petZipcode = results.pet[i].contact.zip.$t
           console.log(petZipcode);
 
-<<<<<<< HEAD
+
         console.log("--------");
         console.log(petCity + " " + petState + " " + petZipcode);
 
         var location = (petCity + " " + petState + " " + petZipcode);
         var petImgURL = results.pet[i].media.photos.photo[2].$t;
-=======
+
 
           console.log("--------");
           console.log(petCity+" "+petState+" "+petZipcode);
->>>>>>> d0404277d6b079b91a9ecfb5432248db3bc7c8e3
 
           var location = (petCity+" "+petState+" "+petZipcode);
           var petImgURL = results.pet[i].media.photos.photo[2].$t;
@@ -169,7 +169,7 @@ $(document).ready(function() {
 
           var petId = results.pet[i].id.$t;
 
-<<<<<<< HEAD
+
         function filterEmailResults(results) {
 
           if (!results.pet[i].contact.email || !('$t' in results.pet[i].contact.email)) {
@@ -177,7 +177,7 @@ $(document).ready(function() {
 
           } else {
             return `<a href="mailto:${results.pet[i].contact.email.$t}" class="email">${results.pet[i].contact.email.$t}</a>`;
-=======
+
           var animalModalId = "petId" + petId
           console.log(animalModalId);
 
@@ -187,10 +187,9 @@ $(document).ready(function() {
             } else {
               return `<a href="mailto:${results.pet[i].contact.email.$t}" class="email">${results.pet[i].contact.email.$t}</a>`;
             };
->>>>>>> d0404277d6b079b91a9ecfb5432248db3bc7c8e3
           };
 
-<<<<<<< HEAD
+
         function filterPhoneResults(results) {
 
           if (!('$t' in results.pet[i].contact.phone)) {
@@ -220,7 +219,7 @@ $(document).ready(function() {
           'src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBVnpyx6VUOqZt71-xpQox5I19np1HBjig&q=' + petCity + petState + petZipcode + '" allowfullscreen>' +
           '</iframe>' +
           '</div>' +
-=======
+
           function filterPhoneResults(results) {
             if(!('$t' in results.pet[i].contact.phone)) {
               return 'None Provided';
@@ -262,18 +261,18 @@ $(document).ready(function() {
               'src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBVnpyx6VUOqZt71-xpQox5I19np1HBjig&q=' + petCity + petState + petZipcode + '" allowfullscreen>' +
               '</iframe>' +
             '</div>' +
->>>>>>> d0404277d6b079b91a9ecfb5432248db3bc7c8e3
+
           '</div>' +
           '</div>'
 
 
-<<<<<<< HEAD
+
 
         $('#animalResults').append(animalCard)
-=======
+
           $('#animalResults').append(animalCard)
         }
->>>>>>> d0404277d6b079b91a9ecfb5432248db3bc7c8e3
+
       }
 
 
@@ -300,7 +299,7 @@ $(document).ready(function() {
 
     }
     // -----------------------------------------------------------
-  });
+  };
 
 
   var queryURL2 = "https://maps.googleapis.com/maps/api/geocode/json?address=" + zipInput + "&key=AIzaSyANo9S84eZ7PVyuKP2DSVE4wOawDLvocSE";
@@ -392,9 +391,9 @@ $(document).ready(function() {
     //   </div>
 
   });
-  // >>>>>>> ce8e854e6879e6b4f9da27311ab0006f29ecdbb4
-  //
 
+
+});
   // $( When button is clicked).on("click", function () {
   //   var saveResult = {
   //     savePetName: petName,
@@ -426,29 +425,29 @@ $(document).ready(function() {
   //   $("#").append(petName);
   //   //etc
   // })
-$(document).on("click", ".card", function(){
-  petLong = this.
-  petLat = this.
+// $(document).on("click", ".card", function(){
+//   petLong = this.
+//   petLat = this.
+//
+//   function initMap() {
+//   var myLatLng = {lat: petLat, lng: petLong};
+//
+//   var map = new google.maps.Map(document.getElementById('map'), {
+//     zoom: 4,
+//     center: myLatLng
+//   });
+//
+//   var marker = new google.maps.Marker({
+//     position: myLatLng,
+//     map: map,
+//     title: petName
+//   });
+// }
+// });
 
-  function initMap() {
-  var myLatLng = {lat: petLat, lng: petLong};
-
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 4,
-    center: myLatLng
-  });
-
-  var marker = new google.maps.Marker({
-    position: myLatLng,
-    map: map,
-    title: petName
-  });
-}
-}
 
 
 
-});
 
 // Add favoriting functionality
 // Integrated pinned maps
