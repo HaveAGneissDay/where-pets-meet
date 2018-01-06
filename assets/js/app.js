@@ -87,7 +87,7 @@ $(document).ready(function() {
         alert('Please fill out all the fields.')
 
     }
-  } 
+  }
 
       var queryURL = 'https://api.petfinder.com/pet.find?format=json&key=dd9016ebaee01ff97c4bd3319ee97eaf&animal=' + soughtAnimal + '&location=' + zipInput + '&?count=5&callback=?';
       console.log(queryURL);
@@ -394,7 +394,7 @@ $(document).ready(function() {
   let testing = []
 
 });
-  // $( When button is clicked).on("click", function () {
+  // $("#plusBtn").on("click", function () {
   //   var saveResult = {
   //     savePetName: petName,
   //     savePetGender: petGender,
