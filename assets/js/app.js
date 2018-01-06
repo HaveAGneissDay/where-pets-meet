@@ -12,6 +12,8 @@ $(document).ready(function() {
   // For modals to work.
   $('.modal').modal();
 
+  $('.collapsible').collapsible();
+
   // -----------------------------------------------------------
   var addressPicker = new AddressPicker();
 
