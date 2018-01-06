@@ -233,6 +233,10 @@ $(document).ready(function() {
   });
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> michael fixes things
 
 });
 
