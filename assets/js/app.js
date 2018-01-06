@@ -177,8 +177,7 @@ $(document).ready(function() {
         '</div>' +
         '</div>'
 
-
-        $('#animalResults').append(animalCard)
+        $('#animalResults').append(animalCard);
       }
 
 
