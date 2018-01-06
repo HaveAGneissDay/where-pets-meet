@@ -1,3 +1,8 @@
+$(document).ready(function () {
+  $('.parallax').parallax();
+});
+
+
 $(document).ready(function() {
 
   // Required init for dropdowns to work.
@@ -364,7 +369,6 @@ $(document).ready(function() {
     //   </div>
 
   });
-  let testing = []
 
 });
   // $("#plusBtn").on("click", function () {
