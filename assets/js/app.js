@@ -176,7 +176,8 @@ $(document).ready(function() {
 
           } else {
             return `<a href="mailto:${results.pet[i].contact.email.$t}" class="email">${results.pet[i].contact.email.$t}</a>`;
- }
+          }
+          
           var animalModalId = "petId" + petId
           console.log(animalModalId);
 
