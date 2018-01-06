@@ -1,3 +1,8 @@
+$(document).ready(function () {
+  $('.parallax').parallax();
+});
+
+
 $(document).ready(function() {
 
   // Required init for dropdowns to work.
