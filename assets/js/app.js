@@ -177,7 +177,7 @@ $(document).ready(function() {
 
           } else {
             return `<a href="mailto:${results.pet[i].contact.email.$t}" class="email">${results.pet[i].contact.email.$t}</a>`;
-
+ }
           var animalModalId = "petId" + petId
           console.log(animalModalId);
 
@@ -265,39 +265,12 @@ $(document).ready(function() {
           '</div>' +
           '</div>'
 
-
-
-
         $('#animalResults').append(animalCard)
 
-          $('#animalResults').append(animalCard)
         }
 
       }
 
-
-      // '<iframe ' +
-      //  'width="600"' +
-      //  'height="450"' +
-      //  'frameborder="0" style="border:0"' +
-      //  'src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDkFbTAnh3rnlQKy21dSKNCfTYV9PRR0_U&q=Space+Needle,Seattle+WA" allowfullscreen>' +
-      // '</iframe>' +
-
-      // <div class="col s12 m6 l3">
-      //   <div class="card">
-      //     <div class="card-image">
-      //       <img src="http://photos.petfinder.com/photos/pets/37260331/1/?bust=1491274848&width=500&-x.jpg">
-      //       <span class="card-title">Heidi (F) | Menlo Park</span>
-      //       <a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger" href="#modalHeidi"><i class="material-icons">add</i></a>
-      //     </div>
-      //     <div class="card-content">
-      //       <p>Phone: 555-555-1234</p>
-      //       <p>Email: tiramisudogrescue@gmail.com</p>
-      //     </div>
-      //   </div>
-      // </div>
-
-    }
     // -----------------------------------------------------------
   };
 
