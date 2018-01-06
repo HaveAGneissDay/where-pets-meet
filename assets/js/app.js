@@ -145,9 +145,9 @@ $(document).ready(function() {
 
         var animalCard =  '<div class="col s12 m6 l3">' +
         '<div class="card medium sticky-action">' +
-        '<div class="card-image">' +
+        '<div class="card-image" id="imgCustom" >' +
         '<img class="activator" src="' + petImgURL + '">' +
-        '<span class="card-title">'+ petName + ' (' + petGender + ')' + '<br>' + petCity + '</span>' +
+        '<span class="card-title" id="txtCustom">'+ petName + ' (' + petGender + ')' + '<br>' + petCity + '</span>' +
         // '<a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger" id="petInfo" href="#' + animalModalId + '"><i class="material-icons">add</i></a>' +
         '<a class="btn-floating btn-large waves-effect halfway-fab waves-light red"><i class="material-icons">add</i></a>' +
         '</div>' +
@@ -162,7 +162,7 @@ $(document).ready(function() {
           // '</iframe>' +
           '</div>' +
           '<div class="card-action">' +
-            '<a class="activator" href="#">See more...</a>' +
+            '<a class="activator" href="#">Read more...</a>' +
           '</div>' +
           '<div class="card-reveal">' +
           '<span class="card-title grey-text text-darken-4">' + petName + '<i class="material-icons right">close</i></span>' +
@@ -233,6 +233,8 @@ $(document).ready(function() {
     //   </div>
 
   });
+
+
 
 });
 

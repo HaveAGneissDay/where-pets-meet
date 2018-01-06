@@ -30,6 +30,10 @@ nav .brand-logo {
   color: #fff;
 }
 
+html {
+  background-color: black;
+}
+
 h2 {
     font-size: 1.56rem;
     font-weight: 400;
@@ -80,6 +84,7 @@ h1 {
     min-height: 50%;
     min-width: 50%;
     overflow-y: hidden;
+    opacity: 0.65;
 }
 
 #animated-background-wrapper {
@@ -135,4 +140,16 @@ span .card-title {
 
 .halfway-fab {
   top: 22px !important;
+}
+
+#imgCustom img {
+  opacity: 0.75;
+}
+
+#imgCustom {
+  background: black;
+}
+
+#txtCustom {
+  font-weight: 400;
 }
