@@ -225,6 +225,10 @@ $(document).ready(function() {
     console.log('Button has been clicked.');
 
   });
+<<<<<<< HEAD
+=======
+
+>>>>>>> parent of 9c19e38... Merge branch 'master' of https://github.com/enochwu/where-pets-meet
 
 
 
