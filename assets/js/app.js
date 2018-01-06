@@ -180,7 +180,7 @@ $(document).ready(function() {
         '</div>'
 
         $('#animalResults').append(animalCard);
-
+      }
 
       // '<iframe ' +
       //  'width="600"' +
