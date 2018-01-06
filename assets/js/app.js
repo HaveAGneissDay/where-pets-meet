@@ -322,16 +322,16 @@ $(document).ready(function() {
   // })
   //
   // database.ref().on("child_added", function(snapshot) {
-  //   petName = snapshot.savePetName.val();
-  //   petGender = snapshot.savePetGender.val();
-  //   petPhone = snapshot.savePetPhone.val();
-  //   petEmail = snapshot.savePetEmail.val();
-  //   petAbout = snapshot.savePetAbout.val();
-  //   petAddress = snapshot.savePetAdress.val();
-  //   petCity = snapshot.savePetCity.val();
-  //   petState= snapshot.savePetState.val();
-  //   petZipCode = snapshot.savePetZipcode.val();
-  //   petIngUrl = snapshot.savePetImgUrl.val();
+  //   petName = snapshot.val().savePetName;
+  //   petGender = snapshot.val().savePetGender;
+  //   petPhone = snapshot.val().savePetPhone;
+  //   petEmail = snapshot.val().savePetEmail;
+  //   petAbout = snapshot.val().savePetAbout;
+  //   petAddress = snapshot.val().savePetAdress;
+  //   petCity = snapshot.val().savePetCity;
+  //   petState= snapshot.val().savePetState;
+  //   petZipCode = snapshot.val().savePetZipcode;
+  //   petIngUrl = snapshot.val().savePetImgUrl;
   //
   //   $("#").append(petName);
   //   //etc
