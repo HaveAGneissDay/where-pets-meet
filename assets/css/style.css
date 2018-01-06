@@ -118,7 +118,7 @@ h6 {
 }
 
 #topper {
-  margin-top: 150px;
+  margin-top: 75px;
 }
 
 #rotater {
@@ -164,4 +164,8 @@ span .card-title {
 
 #txtCustom {
   font-weight: 400;
+}
+
+.collapsible-body {
+  background-color: white;
 }
