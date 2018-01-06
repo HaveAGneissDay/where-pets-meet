@@ -23,14 +23,14 @@ $(document).ready(function() {
   });
   // Initialize Firebase
   var config = {
-    apiKey: "AIzaSyDWOzsO-5lWbobwqB0XodtPUEbvHaei6pU",
-    authDomain: "petproject-ebbc1.firebaseapp.com",
-    databaseURL: "https://petproject-ebbc1.firebaseio.com",
-    projectId: "petproject-ebbc1",
-    storageBucket: "petproject-ebbc1.appspot.com",
-    messagingSenderId: "1068542777472"
-  };
-  firebase.initializeApp(config);
+     apiKey: "AIzaSyBGcbEkhs5f11dv5l88Lv9QtcY8_Dy9K6o",
+     authDomain: "petmeetup-5ad45.firebaseapp.com",
+     databaseURL: "https://petmeetup-5ad45.firebaseio.com",
+     projectId: "petmeetup-5ad45",
+     storageBucket: "",
+     messagingSenderId: "776217987387"
+   };
+   firebase.initializeApp(config);
 
 
   var database = firebase.database();
@@ -305,34 +305,57 @@ $(document).ready(function() {
   // >>>>>>> ce8e854e6879e6b4f9da27311ab0006f29ecdbb4
   //
 
-  $( When button is clicked).on("click", function () {
-    var saveResult = {
-      savePetName: petName,
-      savePetGender: petGender,
-      savePetPhone: petPhone,
-      savePetEmail: petEmail,
-      savePetAbout: aboutPet,
-      savePetAddress: petAddress,
-      savePetCity: petCity,
-      savePetState: petState,
-      savePetZipcode: petZipcode,
-      savePetImgUrl: petImgURL
-    }
-    database.ref().push(saveResult);
-  })
+  // $( When button is clicked).on("click", function () {
+  //   var saveResult = {
+  //     savePetName: petName,
+  //     savePetGender: petGender,
+  //     savePetPhone: petPhone,
+  //     savePetEmail: petEmail,
+  //     savePetAbout: aboutPet,
+  //     savePetAddress: petAddress,
+  //     savePetCity: petCity,
+  //     savePetState: petState,
+  //     savePetZipcode: petZipcode,
+  //     savePetImgUrl: petImgURL
+  //   }
+  //   database.ref().push(saveResult);
+  // })
+  //
+  // database.ref().on("child_added", function(snapshot) {
+  //   petName = snapshot.savePetName.val();
+  //   petGender = snapshot.savePetGender.val();
+  //   petPhone = snapshot.savePetPhone.val();
+  //   petEmail = snapshot.savePetEmail.val();
+  //   petAbout = snapshot.savePetAbout.val();
+  //   petAddress = snapshot.savePetAdress.val();
+  //   petCity = snapshot.savePetCity.val();
+  //   petState= snapshot.savePetState.val();
+  //   petZipCode = snapshot.savePetZipcode.val();
+  //   petIngUrl = snapshot.savePetImgUrl.val();
+  //
+  //   $("#").append(petName);
+  //   //etc
+  // })
+$(document).on("click", ".card", function(){
+  petLong = this.
+  petLat = this.
 
-  database.ref().on("value", function(snapshot) {
-    petName = snapshot.savePetName.val();
-    petGender = snapshot.savePetGender.val();
-    petPhone = snapshot.savePetPhone.val();
-    petEmail = snapshot.savePetEmail.val();
-    petAbout = snapshot.savePetAbout.val();
-    petAddress = snapshot.savePetAdress.val();
-    petCity = snapshot.savePetCity.val();
-    petState= snapshot.savePetState.val();
-    petZipCode = snapshot.savePetZipcode.val();
-    petIngUrl = snapshot.savePetImgUrl.val();
-  })
+  function initMap() {
+  var myLatLng = {lat: petLat, lng: petLong};
+
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 4,
+    center: myLatLng
+  });
+
+  var marker = new google.maps.Marker({
+    position: myLatLng,
+    map: map,
+    title: petName
+  });
+}
+}
+
 });
 
 //Components that we need in general terms
