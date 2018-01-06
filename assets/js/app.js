@@ -177,7 +177,13 @@ $(document).ready(function() {
         '</div>' +
         '</div>'
 
+<<<<<<< HEAD
         $('#animalResults').append(animalCard);
+=======
+
+
+        $('#animalResults').append(animalCard)
+>>>>>>> 3e76a75a3aae8db06dc5488abd8b69542ab77f49
       }
 
 
