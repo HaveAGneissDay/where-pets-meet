@@ -391,7 +391,7 @@ $(document).ready(function() {
     //   </div>
 
   });
-
+  let testing = []
 
 });
   // $( When button is clicked).on("click", function () {
