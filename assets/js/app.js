@@ -35,9 +35,34 @@ $(document).ready(function() {
 
   var database = firebase.database();
 
+  function submitState(el) {
 
+    var $form = $(el),
+        $requiredInputs = $form.find('input:required','div:required'),
+        $submit = $form.find('button[type="submit"]');
 
+    $submit.attr('disabled', 'disabled');
 
+    $requiredInputs.keyup(function () {
+
+      $form.data('empty', 'false');
+
+      $requiredInputs.each(function() {
+        if ($(this).val() === '') {
+          $form.data('empty', 'true');
+        }
+      });
+
+      if ($form.data('empty') === 'true') {
+        $submit.attr('disabled', 'disabled').attr('title', 'fill in all required fields');
+      } else {
+        $submit.removeAttr('disabled').attr('title', 'click to submit');
+      }
+    });
+  }
+  // apply to each form element individually
+  submitState('#sign_up_user');
+  submitState('#login_user');
 
   $("#submit").on("click", function() {
 
@@ -46,14 +71,9 @@ $(document).ready(function() {
     $('#animalResults').html('')
 
     // -----------------------------------------------------------
-    var zipInput = $('#zip_code').val().trim()
-    console.log(zipInput);
-
-    var soughtAnimal = $('#choiceAnimal>option:selected').val().trim();
-    console.log(soughtAnimal);
-
-    var queryURL = 'https://api.petfinder.com/pet.find?format=json&key=dd9016ebaee01ff97c4bd3319ee97eaf&animal=' + soughtAnimal + '&location=' + zipInput + '&?count=5&callback=?';
-    console.log(queryURL);
+    var zipInput = $('#zip_code').val().trim(),
+        soughtAnimal = $('#choiceAnimal>option:selected').val().trim(),
+        queryURL = 'https://api.petfinder.com/pet.find?format=json&key=dd9016ebaee01ff97c4bd3319ee97eaf&animal=' + soughtAnimal + '&location=' + zipInput + '&?count=5&callback=?';
 
     $.ajax({
       type: 'GET',
@@ -77,55 +97,19 @@ $(document).ready(function() {
 
       for (var i = 0; i < 25; i++) {
 
-        // var breed1 = results.pet[i].breeds.breed[0].$t
-        // var breed2 = results.pet[i].breeds.breed[1].$t
-        var petName = results.pet[i].name.$t
-        console.log(petName);
-
-        console.log(results);
-
-        var petGender = results.pet[i].sex.$t
-        console.log(petGender);
-
-        var petPhone = results.pet[i].contact.phone.$t
-        console.log(petPhone);
-
-        var petEmail = results.pet[i].contact.email.$t
-        console.log(petEmail);
-
-        var aboutPet = results.pet[i].description.$t
-        console.log(aboutPet);
-
-        var petAddress = results.pet[i].contact.address1.$t
-        console.log(petAddress);
-
-        var petCity = results.pet[i].contact.city.$t
-        console.log(petCity);
-
-        var petState = results.pet[i].contact.state.$t
-        console.log(petState);
-
-        var petZipcode = results.pet[i].contact.zip.$t
-        console.log(petZipcode);
-
-
-        console.log("--------");
-        console.log(petCity+" "+petState+" "+petZipcode);
-
-        var location = (petCity+" "+petState+" "+petZipcode);
-        var petImgURL = results.pet[i].media.photos.photo[2].$t;
-
-        console.log('Image source link:');
-        console.log(petImgURL);
-
-        // console.log(breed1);
-        // console.log(breed2);
-        console.log("____________________");
-
-        var petId = results.pet[i].id.$t;
-
-        var animalModalId = "petId" + petId
-        console.log(animalModalId);
+        var petName = results.pet[i].name.$t,
+            petGender = results.pet[i].sex.$t,
+            petPhone = results.pet[i].contact.phone.$t,
+            petEmail = results.pet[i].contact.email.$t,
+            aboutPet = results.pet[i].description.$t,
+            petAddress = results.pet[i].contact.address1.$t,
+            petCity = results.pet[i].contact.city.$t,
+            petState = results.pet[i].contact.state.$t,
+            petZipcode = results.pet[i].contact.zip.$t,
+            location = (petCity+" "+petState+" "+petZipcode),
+            petImgURL = results.pet[i].media.photos.photo[2].$t,
+            petId = results.pet[i].id.$t,
+            animalModalId = "petId" + petId;
 
         function filterEmailResults(results) {
           if(!results.pet[i].contact.email || !('$t' in results.pet[i].contact.email)) {

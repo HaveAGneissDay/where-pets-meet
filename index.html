@@ -108,16 +108,16 @@
         </div>
 
         <div class="input-field col s12 m3 white-text">
-          <select class="icons" id="choiceAnimal">
+          <select class="icons" id="choiceAnimal" required>
             <option value="" disabled selected>Choose an animal.</option>
             <option value="dog" data-icon="assets/images/dog.jpeg" class="left circle">Dog</option>
             <option value="cat" data-icon="assets/images/cat.png" class="left circle">Cat</option>
             <option value="horse" data-icon="assets/images/horse.png" class="left circle">Horse</option>
             <option value="rabbit" data-icon="assets/images/rabbit.jpg" class="left circle">Rabbit</option>
-            <option value="smallfurry" data-icon="assets/images/smallfurry.jpg" class="left circle">Small & Furry</option>
-            <option value="reptile" data-icon="assets/images/reptile.jpg" class="left circle">Scales, Fins & Others</option>
+            <!-- <option value="smallfurry" data-icon="assets/images/smallfurry.jpg" class="left circle">Small & Furry</option>
+            <option value="reptile" data-icon="assets/images/reptile.jpg" class="left circle">Scales, Fins & Others</option> -->
             <option value="bird" data-icon="assets/images/bird.jpg" class="left circle">Birds</option>
-            <option value="barnyard" data-icon="assets/images/barnyard.png" class="left circle">Barnyard</option>
+            <!-- <option value="barnyard" data-icon="assets/images/barnyard.png" class="left circle">Barnyard</option> -->
 
           </select>
         </div>
@@ -129,7 +129,7 @@
         <div class="input-field col s4 m2 white-text">
           <div class="search_form--label">
             <label for="search_form--location" required=""></label>
-            <input placeholder="City, State" type="text" name="location" id="zip_code" class="js-search-location" size="35" required="" autocomplete="on">
+            <input placeholder="City, State" type="text" name="location" id="zip_code" class="js-search-location" size="35" autocomplete="on" required>
           </div>
           <!-- <input placeholder="94025" id="zip_code" type="text" class="validate">
           <label for="zip_code">Zip Code</label> -->
@@ -209,11 +209,6 @@
         </div>
 
       </div>
-
-
-      <video autoplay loop id="background-video" muted plays-inline>
-          <source src="assets/images/cat.mp4" type="video/mp4">
-      </video>
 
       <!-- //animated background-->
       <!-- <div id="animated-background-wrapper">

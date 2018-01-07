@@ -169,3 +169,8 @@ span .card-title {
 .collapsible-body {
   background-color: white;
 }
+
+input[type="submit"]:disabled {
+  background: #555;
+  cursor: not-allowed;
+}
