@@ -7,7 +7,9 @@ $(document).ready(function() {
   $(".rotate").rotator();
 
   // For carousel to work.
-  $('.carousel.carousel-slider').carousel({fullWidth: true});
+  $('.carousel.carousel-slider').carousel({
+    fullWidth: true
+  });
 
   // For modals to work.
   $('.modal').modal();
@@ -34,7 +36,7 @@ $(document).ready(function() {
 
 
   var database = firebase.database();
-  var zipInput
+  var zipInput;
 
 
 
@@ -61,17 +63,17 @@ $(document).ready(function() {
       processData: true,
       data: {},
       dataType: "json",
-      success: function (petApiData) {
+      success: function(petApiData) {
         processData(petApiData);
       }
     });
 
-    function processData(petApiData){
+    function processData(petApiData) {
 
       var results = petApiData.petfinder.pets
 
       $('#modalTitle').html(
-        'Showing ' + soughtAnimal + 's ' + 'near '+ zipInput
+        'Showing ' + soughtAnimal + 's ' + 'near ' + zipInput
       )
 
 
@@ -110,9 +112,9 @@ $(document).ready(function() {
 
 
         console.log("--------");
-        console.log(petCity+" "+petState+" "+petZipcode);
+        console.log(petCity + " " + petState + " " + petZipcode);
 
-        var location = (petCity+" "+petState+" "+petZipcode);
+        var location = (petCity + " " + petState + " " + petZipcode);
         var petImgURL = results.pet[i].media.photos.photo[2].$t;
 
         console.log('Image source link:');
@@ -128,7 +130,7 @@ $(document).ready(function() {
         console.log(animalModalId);
 
         function filterEmailResults(results) {
-          if(!results.pet[i].contact.email || !('$t' in results.pet[i].contact.email)) {
+          if (!results.pet[i].contact.email || !('$t' in results.pet[i].contact.email)) {
             return `<span class="noEmail">None Provided</span>`;
           } else {
             return `<a href="mailto:${results.pet[i].contact.email.$t}" class="email">${results.pet[i].contact.email.$t}</a>`;
@@ -136,7 +138,7 @@ $(document).ready(function() {
         };
 
         function filterPhoneResults(results) {
-          if(!('$t' in results.pet[i].contact.phone)) {
+          if (!('$t' in results.pet[i].contact.phone)) {
             return 'None Provided';
           } else {
             return `${results.pet[i].contact.phone.$t}`;
@@ -145,14 +147,14 @@ $(document).ready(function() {
         var email = filterEmailResults(results);
         var phone = filterPhoneResults(results);
 
-        var animalCard =  '<div class="col s12 m6 l3">' +
-        '<div class="card medium sticky-action">' +
-        '<div class="card-image" id="imgCustom" >' +
-        '<img class="activator" src="' + petImgURL + '">' +
-        '<span class="card-title" id="txtCustom">'+ petName + ' (' + petGender + ')' + '<br>' + petCity + '</span>' +
-        // '<a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger" id="petInfo" href="#' + animalModalId + '"><i class="material-icons">add</i></a>' +
-        '<a class="btn-floating btn-large waves-effect halfway-fab waves-light red petFav"><i class="material-icons">add</i></a>' +
-        '</div>' +
+        var animalCard = '<div class="col s12 m6 l3">' +
+          '<div class="card medium sticky-action">' +
+          '<div class="card-image" id="imgCustom" >' +
+          '<img class="activator" src="' + petImgURL + '">' +
+          '<span class="card-title" id="txtCustom">' + petName + ' (' + petGender + ')' + '<br>' + petCity + '</span>' +
+          // '<a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger" id="petInfo" href="#' + animalModalId + '"><i class="material-icons">add</i></a>' +
+          '<a class="btn-floating btn-large waves-effect halfway-fab waves-light red petFav"><i class="material-icons">add</i></a>' +
+          '</div>' +
           '<div class="card-content">' +
           '<p>Phone: ' + phone + '</p>' +
           '<p>Email: ' + email + '</p>' +
@@ -164,20 +166,20 @@ $(document).ready(function() {
           // '</iframe>' +
           '</div>' +
           '<div class="card-action">' +
-            '<a class="activator" href="#">Read more...</a>' +
+          '<a class="activator" href="#">Read more...</a>' +
           '</div>' +
           '<div class="card-reveal">' +
           '<span class="card-title grey-text text-darken-4">' + petName + '<i class="material-icons right">close</i></span>' +
           '<p>' + aboutPet + '</p>' +
-            '<iframe ' +
-            'width="100%"' +
-            'height="300px"' +
-            'frameborder="0" style="border:0"' +
-            'src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBVnpyx6VUOqZt71-xpQox5I19np1HBjig&q=' + petCity + petState + petZipcode + '" allowfullscreen>' +
-            '</iframe>' +
+          '<iframe ' +
+          'width="100%"' +
+          'height="300px"' +
+          'frameborder="0" style="border:0"' +
+          'src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBVnpyx6VUOqZt71-xpQox5I19np1HBjig&q=' + petCity + petState + petZipcode + '" allowfullscreen>' +
+          '</iframe>' +
           '</div>' +
-        '</div>' +
-        '</div>'
+          '</div>' +
+          '</div>'
 
         $('#animalResults').append(animalCard);
       }
@@ -220,18 +222,18 @@ $(document).ready(function() {
   var queryURL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + zipInput + "&key=AIzaSyANo9S84eZ7PVyuKP2DSVE4wOawDLvocSE";
 
   $.ajax({
-      url: queryURL,
-      method: "GET",
-      success: function(response) {
-          // response goes here
+    url: queryURL,
+    method: "GET",
+    success: function(response) {
+      // response goes here
 
-          console.log(response)
-          console.log("-----------------------")
-          console.log(response.results[0].geometry.location.lat)
-          console.log(response.results[0].geometry.location.lng)
-          latitude = response.results[0].geometry.location.lat;
-          longitude = response.results[0].geometry.location.lng;
-      }
+      console.log(response)
+      console.log("-----------------------")
+      console.log(response.results[0].geometry.location.lat)
+      console.log(response.results[0].geometry.location.lng)
+      latitude = response.results[0].geometry.location.lat;
+      longitude = response.results[0].geometry.location.lng;
+    }
   });
 
   var map;
@@ -240,7 +242,10 @@ $(document).ready(function() {
   var latitude;
 
   function initMap() {
-    var newArea = {lat: latitude, lng: longitude};
+    var newArea = {
+      lat: latitude,
+      lng: longitude
+    };
 
     map = new google.maps.Map(document.getElementById('map'), {
       center: newArea,
@@ -278,9 +283,12 @@ $(document).ready(function() {
   }
 
 
-  $(document).on("click",".petFav", function() {
+  $(document).on("click", ".petFav", function() {
 
     console.log('Button has been clicked.');
+
+  // send the object into firebase
+  //get the object from firebase when clicked. repopulated on the favorites
 
   });
 
