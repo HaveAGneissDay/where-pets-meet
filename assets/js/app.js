@@ -295,16 +295,26 @@ $("#zip_code").val("");
   $(document).on("click", ".petFav", function() {
 
     console.log('Button has been clicked.');
+  var newPetName = this.petName;
+  var newPetGender = this.petGender;
+  var newAboutPet = this.aboutPet;
+    var newPetImg = this.petImgURL;
+    var newPetCity = this.petCity;
+    var newPetZip = this.petZip;
+    var newPetState = this.petState;
+    var newPetEmail = this.email;
+    var newPetPhoneNumber = this.phone;
+
     var newPetFav = {
-      newPetName: this.petName,
-      newPetGender: this.petGender,
-      newAboutPet: this.aboutPet,
-      newPetImg: this.petImgURL,
-      newPetCity: this.petCity,
-      newPetZip: this.petZip,
-      newPetState: this.petState,
-      newPetEmail: this.email,
-      newPetPhoneNumber: this.phone
+      name: newPetName,
+      gender: newPetGender,
+      about: newAboutPet,
+      img: newPetImg,
+      city: newPetCity,
+      zip: newPetZip,
+      state: newPetState,
+      email: newPetEmail,
+      phoneNumber: newPetPhoneNumber
     }
 database.ref().push(newPetFav);
   // send the object into firebase
