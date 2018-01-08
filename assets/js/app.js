@@ -334,11 +334,23 @@ $(document).ready(function() {
       phoneNumber: newPetPhoneNumber
     }
     database.ref().push(newPetFav);
-    // send the object into firebase
-    //get the object from firebase when clicked. repopulated on the favorites
-
   });
+    //get the object from firebase when clicked. repopulated on the favorites
+    $().on("click", function() {
+      database.ref().on("child_added", function(childSnapshot) {
+        var petName = childSnapshot.val().name;
+        var petGender = childSnapshot.val().gender;
+        var petAbout = childSnapshot.val().about;
+        var petImg = childSnapshot.val().img;
+        var petCity = childSnapshot.val().city;
+        var petZip = childSnapshot.val().zip;
+        var petState = childSnapshot.val().state;
+        var petEmail = childSnapshot.val().email;
+        var petPhoneNumber = childSnapshot.val().phoneNumber;
 
+        $().append()
+      })
+    })
 });
 
 //Components that we need in general terms
