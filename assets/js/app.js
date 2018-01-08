@@ -37,13 +37,21 @@ $(document).ready(function() {
 
   var database = firebase.database();
   var zipInput;
-
-
+  var petName;
+  var petGender;
+  var petPhone;
+  var petEmail;
+  var aboutPet;
+  var petAddress;
+  var petCity;
+  var petState;
+  var petZipcode;
+  var petImgURL;
 
 
   $("#submit").on("click", function() {
 
-event.preventDefault();
+    event.preventDefault();
 
 
 
@@ -59,9 +67,9 @@ event.preventDefault();
       newSoughtAnimal: soughtAnimal,
       newZipInput: zipInput
     };
-database.ref().push(newSearch);
-$('#choiceAnimal>option:selected').val("");
-$("#zip_code").val("");
+    database.ref().push(newSearch);
+    $('#choiceAnimal>option:selected').val("");
+    $("#zip_code").val("");
 
     var queryURL = 'https://api.petfinder.com/pet.find?format=json&key=dd9016ebaee01ff97c4bd3319ee97eaf&animal=' + soughtAnimal + '&location=' + zipInput + '&?count=5&callback=?';
     console.log(queryURL);
@@ -90,33 +98,33 @@ $("#zip_code").val("");
 
         // var breed1 = results.pet[i].breeds.breed[0].$t
         // var breed2 = results.pet[i].breeds.breed[1].$t
-        var petName = results.pet[i].name.$t
+        petName = results.pet[i].name.$t
         console.log(petName);
 
         console.log(results);
 
-        var petGender = results.pet[i].sex.$t
+        petGender = results.pet[i].sex.$t
         console.log(petGender);
 
-        var petPhone = results.pet[i].contact.phone.$t
+        petPhone = results.pet[i].contact.phone.$t
         console.log(petPhone);
 
-        var petEmail = results.pet[i].contact.email.$t
+        petEmail = results.pet[i].contact.email.$t
         console.log(petEmail);
 
-        var aboutPet = results.pet[i].description.$t
+        aboutPet = results.pet[i].description.$t
         console.log(aboutPet);
 
-        var petAddress = results.pet[i].contact.address1.$t
+        petAddress = results.pet[i].contact.address1.$t
         console.log(petAddress);
 
-        var petCity = results.pet[i].contact.city.$t
+        petCity = results.pet[i].contact.city.$t
         console.log(petCity);
 
-        var petState = results.pet[i].contact.state.$t
+        petState = results.pet[i].contact.state.$t
         console.log(petState);
 
-        var petZipcode = results.pet[i].contact.zip.$t
+        petZipcode = results.pet[i].contact.zip.$t
         console.log(petZipcode);
 
 
@@ -124,7 +132,7 @@ $("#zip_code").val("");
         console.log(petCity + " " + petState + " " + petZipcode);
 
         var location = (petCity + " " + petState + " " + petZipcode);
-        var petImgURL = results.pet[i].media.photos.photo[2].$t;
+        petImgURL = results.pet[i].media.photos.photo[2].$t;
 
         console.log('Image source link:');
         console.log(petImgURL);
@@ -295,15 +303,24 @@ $("#zip_code").val("");
   $(document).on("click", ".petFav", function() {
 
     console.log('Button has been clicked.');
-  var newPetName = this.petName;
-  var newPetGender = this.petGender;
-  var newAboutPet = this.aboutPet;
-    var newPetImg = this.petImgURL;
-    var newPetCity = this.petCity;
-    var newPetZip = this.petZip;
-    var newPetState = this.petState;
-    var newPetEmail = this.email;
-    var newPetPhoneNumber = this.phone;
+    var newPetName = petName;
+    console.log(newPetName)
+    var newPetGender = petGender;
+    console.log(newPetGender)
+    var newAboutPet = aboutPet;
+    console.log(newAboutPet)
+    var newPetImg = petImgURL;
+    console.log(newPetImg)
+    var newPetCity = petCity;
+    console.log(newPetCity)
+    var newPetZip = petZipcode;
+    console.log(newPetZip)
+    var newPetState = petState;
+    console.log(newPetState)
+    var newPetEmail = petEmail;
+    console.log(newPetEmail)
+    var newPetPhoneNumber = petPhone;
+    console.log(newPetPhoneNumber)
 
     var newPetFav = {
       name: newPetName,
@@ -316,9 +333,9 @@ $("#zip_code").val("");
       email: newPetEmail,
       phoneNumber: newPetPhoneNumber
     }
-database.ref().push(newPetFav);
-  // send the object into firebase
-  //get the object from firebase when clicked. repopulated on the favorites
+    database.ref().push(newPetFav);
+    // send the object into firebase
+    //get the object from firebase when clicked. repopulated on the favorites
 
   });
 
