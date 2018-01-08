@@ -39,7 +39,7 @@ $(document).ready(function() {
 
     var $form = $(el),
         $requiredInputs = $form.find('input:required','div:required'),
-        $submit = $form.find('button[type="submit"]');
+        $submit = $form.find('input[type="submit"]');
 
     $submit.attr('disabled', 'disabled');
 
@@ -61,8 +61,8 @@ $(document).ready(function() {
     });
   }
   // apply to each form element individually
-  submitState('#sign_up_user');
-  submitState('#login_user');
+  submitState('#choiceAnimal');
+  submitState('#zip_code');
 
   $("#submit").on("click", function() {
 
