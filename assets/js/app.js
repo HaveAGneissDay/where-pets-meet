@@ -43,6 +43,8 @@ $(document).ready(function() {
 
   $("#submit").on("click", function() {
 
+event.preventDefault();
+
 
 
     $('#animalResults').html('')
@@ -53,6 +55,13 @@ $(document).ready(function() {
 
     var soughtAnimal = $('#choiceAnimal>option:selected').val().trim();
     console.log(soughtAnimal);
+    var newSearch = {
+      newSoughtAnimal: soughtAnimal,
+      newZipInput: zipInput
+    };
+database.ref().push(newSearch);
+$('#choiceAnimal>option:selected').val("");
+$("#zip_code").val("");
 
     var queryURL = 'https://api.petfinder.com/pet.find?format=json&key=dd9016ebaee01ff97c4bd3319ee97eaf&animal=' + soughtAnimal + '&location=' + zipInput + '&?count=5&callback=?';
     console.log(queryURL);
@@ -286,7 +295,18 @@ $(document).ready(function() {
   $(document).on("click", ".petFav", function() {
 
     console.log('Button has been clicked.');
-
+    var newPetFav = {
+      newPetName: this.petName,
+      newPetGender: this.petGender,
+      newAboutPet: this.aboutPet,
+      newPetImg: this.petImgURL,
+      newPetCity: this.petCity,
+      newPetZip: this.petZip,
+      newPetState: this.petState,
+      newPetEmail: this.email,
+      newPetPhoneNumber: this.phone
+    }
+database.ref().push(newPetFav);
   // send the object into firebase
   //get the object from firebase when clicked. repopulated on the favorites
 
