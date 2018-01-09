@@ -53,7 +53,8 @@ $(document).ready(function() {
 
     event.preventDefault();
 
-
+    $('#choiceAnimal>option:selected').val("");
+    $("#zip_code").val("");
 
     $('#animalResults').html('')
 
@@ -63,13 +64,11 @@ $(document).ready(function() {
 
     var soughtAnimal = $('#choiceAnimal>option:selected').val().trim();
     console.log(soughtAnimal);
-    var newSearch = {
-      newSoughtAnimal: soughtAnimal,
-      newZipInput: zipInput
-    };
-    database.ref().push(newSearch);
-    $('#choiceAnimal>option:selected').val("");
-    $("#zip_code").val("");
+    // var newSearch = {
+    //   newSoughtAnimal: soughtAnimal,
+    //   newZipInput: zipInput
+    // };
+    // database.ref().push(newSearch);
 
     var queryURL = 'https://api.petfinder.com/pet.find?format=json&key=dd9016ebaee01ff97c4bd3319ee97eaf&animal=' + soughtAnimal + '&location=' + zipInput + '&?count=5&callback=?';
     console.log(queryURL);
@@ -164,6 +163,7 @@ $(document).ready(function() {
         var email = filterEmailResults(results);
         var phone = filterPhoneResults(results);
 
+
         var animalCard = '<div class="col s12 m6 l3">' +
           '<div class="card medium sticky-action">' +
           '<div class="card-image" id="imgCustom" >' +
@@ -188,12 +188,12 @@ $(document).ready(function() {
           '<div class="card-reveal">' +
           '<span class="card-title grey-text text-darken-4">' + petName + '<i class="material-icons right">close</i></span>' +
           '<p>' + aboutPet + '</p>' +
-          '<iframe ' +
-          'width="100%"' +
-          'height="300px"' +
-          'frameborder="0" style="border:0"' +
-          'src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBVnpyx6VUOqZt71-xpQox5I19np1HBjig&q=' + petCity + petState + petZipcode + '" allowfullscreen>' +
-          '</iframe>' +
+          // '<iframe ' +
+          // 'width="100%"' +
+          // 'height="300px"' +
+          // 'frameborder="0" style="border:0"' +
+          // 'src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBVnpyx6VUOqZt71-xpQox5I19np1HBjig&q=' + petCity + petState + petZipcode + '" allowfullscreen>' +
+          // '</iframe>' +
           '</div>' +
           '</div>' +
           '</div>'
@@ -201,40 +201,9 @@ $(document).ready(function() {
         $('#animalResults').append(animalCard);
       }
 
-      // '<iframe ' +
-      //  'width="600"' +
-      //  'height="450"' +
-      //  'frameborder="0" style="border:0"' +
-      //  'src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDkFbTAnh3rnlQKy21dSKNCfTYV9PRR0_U&q=Space+Needle,Seattle+WA" allowfullscreen>' +
-      // '</iframe>' +
-
-      // <div class="col s12 m6 l3">
-      //   <div class="card">
-      //     <div class="card-image">
-      //       <img src="http://photos.petfinder.com/photos/pets/37260331/1/?bust=1491274848&width=500&-x.jpg">
-      //       <span class="card-title">Heidi (F) | Menlo Park</span>
-      //       <a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger" href="#modalHeidi"><i class="material-icons">add</i></a>
-      //     </div>
-      //     <div class="card-content">
-      //       <p>Phone: 555-555-1234</p>
-      //       <p>Email: tiramisudogrescue@gmail.com</p>
-      //     </div>
-      //   </div>
-      // </div>
-
     }
-    // -----------------------------------------------------------
-  });
 
-  // <div id="animalModalId" class="modal">
-  //   <div class="modal-content">
-  //     <h4>Pet Name</h4>
-  //     <p>Pet Description</p>
-  //   </div>
-  //   <div class="modal-footer">
-  //     <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-  //   </div>
-  // </div>
+  });
 
   var queryURL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + zipInput + "&key=AIzaSyANo9S84eZ7PVyuKP2DSVE4wOawDLvocSE";
 
@@ -335,22 +304,43 @@ $(document).ready(function() {
     }
     database.ref().push(newPetFav);
   });
-    //get the object from firebase when clicked. repopulated on the favorites
-    $().on("click", function() {
-      database.ref().on("child_added", function(childSnapshot) {
-        var petName = childSnapshot.val().name;
-        var petGender = childSnapshot.val().gender;
-        var petAbout = childSnapshot.val().about;
-        var petImg = childSnapshot.val().img;
-        var petCity = childSnapshot.val().city;
-        var petZip = childSnapshot.val().zip;
-        var petState = childSnapshot.val().state;
-        var petEmail = childSnapshot.val().email;
-        var petPhoneNumber = childSnapshot.val().phoneNumber;
 
-        $().append()
-      })
-    })
+  database.ref().on("child_added", function(childSnapshot) {
+    var petName = childSnapshot.val().name;
+    var petGender = childSnapshot.val().gender;
+    var petAbout = childSnapshot.val().about;
+    var petImg = childSnapshot.val().img;
+    var petCity = childSnapshot.val().city;
+    var petZip = childSnapshot.val().zip;
+    var petState = childSnapshot.val().state;
+    var petEmail = childSnapshot.val().email;
+    var petPhoneNumber = childSnapshot.val().phoneNumber;
+
+    for (var i = 0; i < 3; i++) {
+      var tabRow = $('<tr/>');
+      var tabData = $('<td/>');
+
+      tabRow.append(tabData);
+    }
+
+    $('tbody').append(tabRow)
+
+    var firstRowTds = $("table") // Get a reference to the table as a jQuery object
+      .children() // Get all of table's immediate children as an array
+      .eq(1) // Get element at the first index of this returned array (the <tbody>)
+      .children("tr") // Get an array of all <tr> children inside the returned <tbody>
+      .eq(0) // Get the 0th child of this returned array (the first <tr>)
+      .children("td"); // Get an array of all <td> children inside the returned <tr>
+
+    // Setting the inner text of each <td> in the firstRowTds array
+    firstRowTds.eq(0).text(petName);
+
+    firstRowTds.eq(1).text(petGender);
+
+    firstRowTds.eq(2).text(petAbout);
+    // $('#savedAnimals').append(petName)
+  })
+
 });
 
 //Components that we need in general terms
