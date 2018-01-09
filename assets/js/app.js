@@ -37,17 +37,17 @@ $(document).ready(function() {
 
   var database = firebase.database();
   var zipInput;
-  // var petName;
-  // var petGender;
-  // var petPhone;
-  // var petEmail;
-  // var aboutPet;
-  // var petAddress;
-  // var petCity;
-  // var petState;
-  // var petZipcode;
-  // var petImgURL;
-
+  var petName;
+  var petGender;
+  var petPhone;
+  var petEmail;
+  var aboutPet;
+  var petAddress;
+  var petCity;
+  var petState;
+  var petZipcode;
+  var petImgURL;
+  var petSearchResults = [];
 
   $("#submit").on("click", function() {
 
@@ -96,6 +96,19 @@ $(document).ready(function() {
 
         // var breed1 = results.pet[i].breeds.breed[0].$t
         // var breed2 = results.pet[i].breeds.breed[1].$t
+        petSearchResults.push({
+          petName: results.pet[i].name.$t,
+          petGender: results.pet[i].sex.$t,
+          petPhone: results.pet[i].contact.phone.$t,
+          petEmail: results.pet[i].contact.email.$t,
+          aboutPet: results.pet[i].description.$t,
+          petAddress: results.pet[i].contact.address1.$t,
+          petCity: results.pet[i].contact.city.$t,
+          petState: results.pet[i].contact.state.$t,
+          petZipcode: results.pet[i].contact.zip.$t,
+          petImgURL: results.pet[i].media.photos.photo[2].$t
+        });
+        console.log(petSearchResults)
         var petName = results.pet[i].name.$t
         console.log(petName);
 
@@ -302,7 +315,7 @@ $(document).ready(function() {
 
     console.log('Button has been clicked.');
     event.preventDefault();
-    var newPetName = petName;
+    var newPetName = $(this).petSearchResults.petName;
     console.log(newPetName)
     var newPetGender = petGender;
     console.log(newPetGender)
