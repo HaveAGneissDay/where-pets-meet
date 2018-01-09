@@ -68,8 +68,6 @@ $(document).ready(function() {
       newZipInput: zipInput
     };
     database.ref().push(newSearch);
-    $('#choiceAnimal>option:selected').val("");
-    $("#zip_code").val("");
 
     var queryURL = 'https://api.petfinder.com/pet.find?format=json&key=dd9016ebaee01ff97c4bd3319ee97eaf&animal=' + soughtAnimal + '&location=' + zipInput + '&?count=5&callback=?';
     console.log(queryURL);
