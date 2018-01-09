@@ -36,17 +36,17 @@ $(document).ready(function() {
 
 
   var database = firebase.database();
-  var zipInput;
-  var petName;
-  var petGender;
-  var petPhone;
-  var petEmail;
-  var aboutPet;
-  var petAddress;
-  var petCity;
-  var petState;
-  var petZipcode;
-  var petImgURL;
+  // var zipInput;
+  // var petName;
+  // var petGender;
+  // var petPhone;
+  // var petEmail;
+  // var aboutPet;
+  // var petAddress;
+  // var petCity;
+  // var petState;
+  // var petZipcode;
+  // var petImgURL;
 
 
   $("#submit").on("click", function() {
@@ -98,33 +98,33 @@ $(document).ready(function() {
 
         // var breed1 = results.pet[i].breeds.breed[0].$t
         // var breed2 = results.pet[i].breeds.breed[1].$t
-        petName = results.pet[i].name.$t
+        var petName = results.pet[i].name.$t
         console.log(petName);
 
         console.log(results);
 
-        petGender = results.pet[i].sex.$t
+        var petGender = results.pet[i].sex.$t
         console.log(petGender);
 
-        petPhone = results.pet[i].contact.phone.$t
+        var petPhone = results.pet[i].contact.phone.$t
         console.log(petPhone);
 
-        petEmail = results.pet[i].contact.email.$t
+        var petEmail = results.pet[i].contact.email.$t
         console.log(petEmail);
 
-        aboutPet = results.pet[i].description.$t
+        var aboutPet = results.pet[i].description.$t
         console.log(aboutPet);
 
-        petAddress = results.pet[i].contact.address1.$t
+        var petAddress = results.pet[i].contact.address1.$t
         console.log(petAddress);
 
-        petCity = results.pet[i].contact.city.$t
+        var petCity = results.pet[i].contact.city.$t
         console.log(petCity);
 
-        petState = results.pet[i].contact.state.$t
+        var petState = results.pet[i].contact.state.$t
         console.log(petState);
 
-        petZipcode = results.pet[i].contact.zip.$t
+        var petZipcode = results.pet[i].contact.zip.$t
         console.log(petZipcode);
 
 
@@ -303,6 +303,7 @@ $(document).ready(function() {
   $(document).on("click", ".petFav", function() {
 
     console.log('Button has been clicked.');
+    event.preventDefault();
     var newPetName = petName;
     console.log(newPetName)
     var newPetGender = petGender;
