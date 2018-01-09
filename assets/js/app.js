@@ -36,7 +36,7 @@ $(document).ready(function() {
 
 
   var database = firebase.database();
-  // var zipInput;
+  var zipInput;
   // var petName;
   // var petGender;
   // var petPhone;
