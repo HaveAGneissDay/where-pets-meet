@@ -109,34 +109,34 @@ $(document).ready(function() {
           petImgURL: results.pet[i].media.photos.photo[2].$t
         });
         console.log(petSearchResults)
-        var petName = results.pet[i].name.$t
-        console.log(petName);
-
-        console.log(results);
-
-        var petGender = results.pet[i].sex.$t
-        console.log(petGender);
-
-        var petPhone = results.pet[i].contact.phone.$t
-        console.log(petPhone);
-
-        var petEmail = results.pet[i].contact.email.$t
-        console.log(petEmail);
-
-        var aboutPet = results.pet[i].description.$t
-        console.log(aboutPet);
-
-        var petAddress = results.pet[i].contact.address1.$t
-        console.log(petAddress);
-
-        var petCity = results.pet[i].contact.city.$t
-        console.log(petCity);
-
-        var petState = results.pet[i].contact.state.$t
-        console.log(petState);
-
-        var petZipcode = results.pet[i].contact.zip.$t
-        console.log(petZipcode);
+        // var petName = results.pet[i].name.$t
+        // console.log(petName);
+        //
+        // console.log(results);
+        //
+        // var petGender = results.pet[i].sex.$t
+        // console.log(petGender);
+        //
+        // var petPhone = results.pet[i].contact.phone.$t
+        // console.log(petPhone);
+        //
+        // var petEmail = results.pet[i].contact.email.$t
+        // console.log(petEmail);
+        //
+        // var aboutPet = results.pet[i].description.$t
+        // console.log(aboutPet);
+        //
+        // var petAddress = results.pet[i].contact.address1.$t
+        // console.log(petAddress);
+        //
+        // var petCity = results.pet[i].contact.city.$t
+        // console.log(petCity);
+        //
+        // var petState = results.pet[i].contact.state.$t
+        // console.log(petState);
+        //
+        // var petZipcode = results.pet[i].contact.zip.$t
+        // console.log(petZipcode);
 
 
         console.log("--------");
@@ -179,13 +179,13 @@ $(document).ready(function() {
           '<div class="card medium sticky-action">' +
           '<div class="card-image" id="imgCustom" >' +
           '<img class="activator" src="' + petImgURL + '">' +
-          '<span class="card-title" id="txtCustom">' + petName + ' (' + petGender + ')' + '<br>' + petCity + '</span>' +
+          '<span class="card-title" id="txtCustom">' + petSearchResults[i].petName + ' (' + petSearchResults[i].petGender + ')' + '<br>' + petSearchResults[i].petCity + '</span>' +
           // '<a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger" id="petInfo" href="#' + animalModalId + '"><i class="material-icons">add</i></a>' +
           '<a class="btn-floating btn-large waves-effect halfway-fab waves-light red petFav"><i class="material-icons">add</i></a>' +
           '</div>' +
           '<div class="card-content">' +
-          '<p>Phone: ' + phone + '</p>' +
-          '<p>Email: ' + email + '</p>' +
+          '<p>Phone: ' + petSearchResults[i].petPhone + '</p>' +
+          '<p>Email: ' + petSearchResults[i].petEmail + '</p>' +
           // '<iframe ' +
           // 'width="100%"' +
           // 'height="300px"' +
@@ -197,13 +197,13 @@ $(document).ready(function() {
           '<a class="activator" href="#">Read more...</a>' +
           '</div>' +
           '<div class="card-reveal">' +
-          '<span class="card-title grey-text text-darken-4">' + petName + '<i class="material-icons right">close</i></span>' +
-          '<p>' + aboutPet + '</p>' +
+          '<span class="card-title grey-text text-darken-4">' + petSearchResults[i].petName + '<i class="material-icons right">close</i></span>' +
+          '<p>' + petSearchResults[i].aboutPet + '</p>' +
           '<iframe ' +
           'width="100%"' +
           'height="300px"' +
           'frameborder="0" style="border:0"' +
-          'src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBVnpyx6VUOqZt71-xpQox5I19np1HBjig&q=' + petCity + petState + petZipcode + '" allowfullscreen>' +
+          'src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBVnpyx6VUOqZt71-xpQox5I19np1HBjig&q=' + petSearchResults[i].petCity + petSearchResults[i].petState + petSearchResults[i].petZipcode + '" allowfullscreen>' +
           '</iframe>' +
           '</div>' +
           '</div>' +
