@@ -91,6 +91,7 @@ $(document).ready(function() {
 
         petSearchResults.push({
           petName: results.pet[i].name.$t,
+          animalType: results.pet[i].animal.$t,
           petGender: results.pet[i].sex.$t,
           petPhone: results.pet[i].contact.phone.$t,
           petEmail: results.pet[i].contact.email.$t,
@@ -248,7 +249,7 @@ $(document).ready(function() {
     var newPetName = petSearchResults[animalDataIndex].petName;
     // console.log(newPetName)
 
-    var newPetGender = petSearchResults[animalDataIndex].petGender;
+    var newPetType= petSearchResults[animalDataIndex].animalType;
     // console.log(newPetGender)
 
     var newPetCity = petSearchResults[animalDataIndex].petCity;
@@ -256,7 +257,7 @@ $(document).ready(function() {
 
     var newPetFav = {
       name: newPetName,
-      gender: newPetGender,
+      type: newPetType,
       city: newPetCity
     }
     database.ref().push(newPetFav);
@@ -265,21 +266,21 @@ $(document).ready(function() {
 
   database.ref().on("child_added", function(childSnapshot) {
     var petName = childSnapshot.val().name;
-    var petGender = childSnapshot.val().gender;
+    var petType = childSnapshot.val().type;
     var petCity = childSnapshot.val().city;
 
-    console.log(petName + '+' + petGender + '+' + petCity);
+    console.log(petName + '+' + petType + '+' + petCity);
 
     var tabRow = $('<tr />')
     var tabName = $('<td />')
     var tabCity = $('<td />')
-    var tabGender = $('<td />')
+    var tabType = $('<td />')
 
     $(tabName).html(petName)
     $(tabRow).append(tabName)
 
-    $(tabGender).html(petGender)
-    $(tabRow).append(tabGender)
+    $(tabType).html(petType)
+    $(tabRow).append(tabType)
 
     $(tabCity).html(petCity)
     $(tabRow).append(tabCity)
