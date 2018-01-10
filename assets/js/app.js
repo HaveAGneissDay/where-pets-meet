@@ -42,25 +42,22 @@ $(document).ready(function() {
   var petState;
   var petZipcode;
   var petImgURL;
-
-  var nameArray = [];
-  var aniTypeArray = [];
-  var cityArray = [];
-
+  var petSearchResults = [];
 
   $("#submit").on("click", function() {
 
     event.preventDefault();
 
+
+
+    $('#animalResults').html('')
+
+    // -----------------------------------------------------------
     zipInput = $('#zip_code').val().trim()
     console.log(zipInput);
 
     var soughtAnimal = $('#choiceAnimal>option:selected').val().trim();
     console.log(soughtAnimal);
-
-    $('#animalResults').html('')
-
-    // -----------------------------------------------------------
     var newSearch = {
       newSoughtAnimal: soughtAnimal,
       newZipInput: zipInput
@@ -83,125 +80,97 @@ $(document).ready(function() {
 
     function processData(petApiData) {
 
-        var results = petApiData.petfinder.pets
+      var results = petApiData.petfinder.pets
 
-        $('#modalTitle').html(
-          'Showing ' + soughtAnimal + 's ' + 'near ' + zipInput
-        )
-
-
-        for (var i = 0; i < 25; i++) {
-
-          // var breed1 = results.pet[i].breeds.breed[0].$t
-          // var breed2 = results.pet[i].breeds.breed[1].$t
-          petName = results.pet[i].name.$t
-          console.log(petName);
-          
-
-          console.log(results);
-
-          petGender = results.pet[i].sex.$t
-          console.log(petGender);
-
-          petPhone = results.pet[i].contact.phone.$t
-          console.log(petPhone);
-
-          petEmail = results.pet[i].contact.email.$t
-          console.log(petEmail);
-
-          aboutPet = results.pet[i].description.$t
-          console.log(aboutPet);
-
-          petAddress = results.pet[i].contact.address1.$t
-          console.log(petAddress);
-
-          petCity = results.pet[i].contact.city.$t
-          console.log(petCity);
-
-          petState = results.pet[i].contact.state.$t
-          console.log(petState);
-
-          petZipcode = results.pet[i].contact.zip.$t
-          console.log(petZipcode);
+      $('#modalTitle').html(
+        'Showing ' + soughtAnimal + 's ' + 'near ' + zipInput
+      )
 
 
-          console.log("--------");
-          console.log(petCity + " " + petState + " " + petZipcode);
+      for (var i = 0; i < 25; i++) {
 
-          var location = (petCity + " " + petState + " " + petZipcode);
-          petImgURL = results.pet[i].media.photos.photo[2].$t;
+        petSearchResults.push({
+          petName: results.pet[i].name.$t,
+          petGender: results.pet[i].sex.$t,
+          petPhone: results.pet[i].contact.phone.$t,
+          petEmail: results.pet[i].contact.email.$t,
+          aboutPet: results.pet[i].description.$t,
+          petAddress: results.pet[i].contact.address1.$t,
+          petCity: results.pet[i].contact.city.$t,
+          petState: results.pet[i].contact.state.$t,
+          petZipcode: results.pet[i].contact.zip.$t,
+          petImgURL: results.pet[i].media.photos.photo[2].$t
+        });
+        console.log(petSearchResults)
 
-          console.log('Image source link:');
-          console.log(petImgURL);
 
-          // console.log(breed1);
-          // console.log(breed2);
-          console.log("____________________");
+        console.log("--------");
+        console.log(petCity + " " + petState + " " + petZipcode);
 
-          var petId = results.pet[i].id.$t;
+        var location = (petCity + " " + petState + " " + petZipcode);
+        petImgURL = results.pet[i].media.photos.photo[2].$t;
 
-          var animalModalId = "petId" + petId
-          console.log(animalModalId);
+        console.log('Image source link:');
+        console.log(petImgURL);
 
-          function filterEmailResults(results) {
-            if (!results.pet[i].contact.email || !('$t' in results.pet[i].contact.email)) {
-              return `<span class="noEmail">None Provided</span>`;
-            } else {
-              return `<a href="mailto:${results.pet[i].contact.email.$t}" class="email">${results.pet[i].contact.email.$t}</a>`;
-            };
+        // console.log(breed1);
+        // console.log(breed2);
+        console.log("____________________");
+
+        var petId = results.pet[i].id.$t;
+
+        var animalModalId = "petId" + petId
+        console.log(animalModalId);
+
+        function filterEmailResults(results) {
+          if (!results.pet[i].contact.email || !('$t' in results.pet[i].contact.email)) {
+            return `<span class="noEmail">None Provided</span>`;
+          } else {
+            return `<a href="mailto:${results.pet[i].contact.email.$t}" class="email">${results.pet[i].contact.email.$t}</a>`;
           };
+        };
 
-          function filterPhoneResults(results) {
-            if (!('$t' in results.pet[i].contact.phone)) {
-              return 'None Provided';
-            } else {
-              return `${results.pet[i].contact.phone.$t}`;
-            };
+        function filterPhoneResults(results) {
+          if (!('$t' in results.pet[i].contact.phone)) {
+            return 'None Provided';
+          } else {
+            return `${results.pet[i].contact.phone.$t}`;
           };
-          var email = filterEmailResults(results);
-          var phone = filterPhoneResults(results);
+        };
+        var email = filterEmailResults(results);
+        var phone = filterPhoneResults(results);
 
-          var animalCard = '<div class="col s12 m6 l3">' +
-            '<div class="card medium sticky-action">' +
-            '<div class="card-image" id="imgCustom" >' +
-            '<img class="activator" src="' + petImgURL + '">' +
-            '<span class="card-title" id="txtCustom">' + petName + ' (' + petGender + ')' + '<br>' + petCity + '</span>' +
-            '<a class="btn-floating btn-large waves-effect halfway-fab waves-light red petFav"><i class="material-icons">add</i></a>' +
-            '</div>' +
-            '<div class="card-content">' +
-            '<p>Phone: ' + phone + '</p>' +
-            '<p>Email: ' + email + '</p>' +
-            '</div>' +
-            '<div class="card-action">' +
-            '<a class="activator" href="#">Read more...</a>' +
-            '</div>' +
-            '<div class="card-reveal">' +
-            '<span class="card-title grey-text text-darken-4">' + petName + '<i class="material-icons right">close</i></span>' +
-            '<p>' + aboutPet + '</p>' +
-            '<iframe ' +
-            'width="100%"' +
-            'height="300px"' +
-            'frameborder="0" style="border:0"' +
-            'src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBVnpyx6VUOqZt71-xpQox5I19np1HBjig&q=' + petCity + petState + petZipcode + '" allowfullscreen>' +
-            '</iframe>' +
-            '</div>' +
-            '</div>' +
-            '</div>'
+        var animalCard = '<div class="col s12 m6 l3">' +
+          '<div class="card medium sticky-action">' +
+          '<div class="card-image" id="imgCustom" >' +
+          '<img class="activator" src="' + petImgURL + '">' +
+          '<span class="card-title" id="txtCustom">' + petSearchResults[i].petName + ' (' + petSearchResults[i].petGender + ')' + '<br>' + petSearchResults[i].petCity + '</span>' +
+          '<a class="btn-floating btn-large waves-effect halfway-fab waves-light red petFav" data-value=' + i + '><i class="material-icons">add</i></a>' +
+          '</div>' +
+          '<div class="card-content">' +
+          '<p>Phone: ' + petSearchResults[i].petPhone + '</p>' +
+          '<p>Email: ' + petSearchResults[i].petEmail + '</p>' +
+          '</div>' +
+          '<div class="card-action">' +
+          '<a class="activator" href="#">Read more...</a>' +
+          '</div>' +
+          '<div class="card-reveal">' +
+          '<span class="card-title grey-text text-darken-4">' + petSearchResults[i].petName + '<i class="material-icons right">close</i></span>' +
+          '<p>' + petSearchResults[i].aboutPet + '</p>' +
+          '<iframe ' +
+          'width="100%"' +
+          'height="300px"' +
+          'frameborder="0" style="border:0"' +
+          'src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBVnpyx6VUOqZt71-xpQox5I19np1HBjig&q=' + petSearchResults[i].petCity + petSearchResults[i].petState + petSearchResults[i].petZipcode + '" allowfullscreen>' +
+          '</iframe>' +
+          '</div>' +
+          '</div>' +
+          '</div>'
 
-          $('#animalResults').append(animalCard);
-        }
-
-        // '<iframe ' +
-        //  'width="600"' +
-        //  'height="450"' +
-        //  'frameborder="0" style="border:0"' +
-        //  'src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDkFbTAnh3rnlQKy21dSKNCfTYV9PRR0_U&q=Space+Needle,Seattle+WA" allowfullscreen>' +
-        // '</iframe>' +
-
+        $('#animalResults').append(animalCard);
+      }
 
     }
-
-    // -----------------------------------------------------------
   });
 
   var queryURL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + zipInput + "&key=AIzaSyANo9S84eZ7PVyuKP2DSVE4wOawDLvocSE";
@@ -270,55 +239,58 @@ $(document).ready(function() {
 
   $(document).on("click", ".petFav", function() {
 
+    event.preventDefault();
+
     console.log('Button has been clicked.');
-    var newPetName = petName;
-    console.log(newPetName)
-    var newPetGender = petGender;
-    console.log(newPetGender)
-    var newAboutPet = aboutPet;
-    console.log(newAboutPet)
-    var newPetImg = petImgURL;
-    console.log(newPetImg)
-    var newPetCity = petCity;
-    console.log(newPetCity)
-    var newPetZip = petZipcode;
-    console.log(newPetZip)
-    var newPetState = petState;
-    console.log(newPetState)
-    var newPetEmail = petEmail;
-    console.log(newPetEmail)
-    var newPetPhoneNumber = petPhone;
-    console.log(newPetPhoneNumber)
+    var animalDataIndex = $(this).data('value');
+    // console.log(animalDataIndex);
+
+    var newPetName = petSearchResults[animalDataIndex].petName;
+    // console.log(newPetName)
+
+    var newPetGender = petSearchResults[animalDataIndex].petGender;
+    // console.log(newPetGender)
+
+    var newPetCity = petSearchResults[animalDataIndex].petCity;
+    // console.log(newPetCity)
 
     var newPetFav = {
       name: newPetName,
       gender: newPetGender,
-      about: newAboutPet,
-      img: newPetImg,
-      city: newPetCity,
-      zip: newPetZip,
-      state: newPetState,
-      email: newPetEmail,
-      phoneNumber: newPetPhoneNumber
+      city: newPetCity
     }
     database.ref().push(newPetFav);
-  });
-    //get the object from firebase when clicked. repopulated on the favorites
-    $().on("click", function() {
-      database.ref().on("child_added", function(childSnapshot) {
-        var petName = childSnapshot.val().name;
-        var petGender = childSnapshot.val().gender;
-        var petAbout = childSnapshot.val().about;
-        var petImg = childSnapshot.val().img;
-        var petCity = childSnapshot.val().city;
-        var petZip = childSnapshot.val().zip;
-        var petState = childSnapshot.val().state;
-        var petEmail = childSnapshot.val().email;
-        var petPhoneNumber = childSnapshot.val().phoneNumber;
 
-        $().append()
-      })
-    })
+  });
+
+  database.ref().on("child_added", function(childSnapshot) {
+    var petName = childSnapshot.val().name;
+    var petGender = childSnapshot.val().gender;
+    var petCity = childSnapshot.val().city;
+
+    console.log(petName + '+' + petGender + '+' + petCity);
+
+    var tabRow = $('<tr />')
+    var tabName = $('<td />')
+    var tabCity = $('<td />')
+    var tabGender = $('<td />')
+
+    $(tabName).html(petName)
+    $(tabRow).append(tabName)
+
+    $(tabGender).html(petGender)
+    $(tabRow).append(tabGender)
+
+    $(tabCity).html(petCity)
+    $(tabRow).append(tabCity)
+
+    $('tbody').append(tabRow)
+
+  })
+    //get the object from firebase when clicked. repopulated on the favorites
+    // $().on("click", function() {
+    //
+    // })
 });
 
 //Components that we need in general terms
