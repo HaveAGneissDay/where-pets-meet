@@ -48,9 +48,10 @@ $(document).ready(function() {
 
     event.preventDefault();
 
-
-
     $('#animalResults').html('')
+
+    petSearchResults = [];
+    console.log(petSearchResults);
 
     // -----------------------------------------------------------
     zipInput = $('#zip_code').val().trim()
