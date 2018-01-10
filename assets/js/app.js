@@ -6,11 +6,6 @@ $(document).ready(function() {
   // Required init for dropdowns to work.
   $(".rotate").rotator();
 
-  // For carousel to work.
-  $('.carousel.carousel-slider').carousel({
-    fullWidth: true
-  });
-
   // For modals to work.
   $('.modal').modal();
 
@@ -94,8 +89,6 @@ $(document).ready(function() {
 
       for (var i = 0; i < 25; i++) {
 
-        // var breed1 = results.pet[i].breeds.breed[0].$t
-        // var breed2 = results.pet[i].breeds.breed[1].$t
         petSearchResults.push({
           petName: results.pet[i].name.$t,
           petGender: results.pet[i].sex.$t,
@@ -109,34 +102,6 @@ $(document).ready(function() {
           petImgURL: results.pet[i].media.photos.photo[2].$t
         });
         console.log(petSearchResults)
-        // var petName = results.pet[i].name.$t
-        // console.log(petName);
-        //
-        // console.log(results);
-        //
-        // var petGender = results.pet[i].sex.$t
-        // console.log(petGender);
-        //
-        // var petPhone = results.pet[i].contact.phone.$t
-        // console.log(petPhone);
-        //
-        // var petEmail = results.pet[i].contact.email.$t
-        // console.log(petEmail);
-        //
-        // var aboutPet = results.pet[i].description.$t
-        // console.log(aboutPet);
-        //
-        // var petAddress = results.pet[i].contact.address1.$t
-        // console.log(petAddress);
-        //
-        // var petCity = results.pet[i].contact.city.$t
-        // console.log(petCity);
-        //
-        // var petState = results.pet[i].contact.state.$t
-        // console.log(petState);
-        //
-        // var petZipcode = results.pet[i].contact.zip.$t
-        // console.log(petZipcode);
 
 
         console.log("--------");
@@ -180,18 +145,11 @@ $(document).ready(function() {
           '<div class="card-image" id="imgCustom" >' +
           '<img class="activator" src="' + petImgURL + '">' +
           '<span class="card-title" id="txtCustom">' + petSearchResults[i].petName + ' (' + petSearchResults[i].petGender + ')' + '<br>' + petSearchResults[i].petCity + '</span>' +
-          // '<a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger" id="petInfo" href="#' + animalModalId + '"><i class="material-icons">add</i></a>' +
           '<a class="btn-floating btn-large waves-effect halfway-fab waves-light red petFav" data-value=' + i + '><i class="material-icons">add</i></a>' +
           '</div>' +
           '<div class="card-content">' +
           '<p>Phone: ' + petSearchResults[i].petPhone + '</p>' +
           '<p>Email: ' + petSearchResults[i].petEmail + '</p>' +
-          // '<iframe ' +
-          // 'width="100%"' +
-          // 'height="300px"' +
-          // 'frameborder="0" style="border:0"' +
-          // 'src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBVnpyx6VUOqZt71-xpQox5I19np1HBjig&q=' + petCity + petState + petZipcode + '" allowfullscreen>' +
-          // '</iframe>' +
           '</div>' +
           '<div class="card-action">' +
           '<a class="activator" href="#">Read more...</a>' +
@@ -212,40 +170,8 @@ $(document).ready(function() {
         $('#animalResults').append(animalCard);
       }
 
-      // '<iframe ' +
-      //  'width="600"' +
-      //  'height="450"' +
-      //  'frameborder="0" style="border:0"' +
-      //  'src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDkFbTAnh3rnlQKy21dSKNCfTYV9PRR0_U&q=Space+Needle,Seattle+WA" allowfullscreen>' +
-      // '</iframe>' +
-
-      // <div class="col s12 m6 l3">
-      //   <div class="card">
-      //     <div class="card-image">
-      //       <img src="http://photos.petfinder.com/photos/pets/37260331/1/?bust=1491274848&width=500&-x.jpg">
-      //       <span class="card-title">Heidi (F) | Menlo Park</span>
-      //       <a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger" href="#modalHeidi"><i class="material-icons">add</i></a>
-      //     </div>
-      //     <div class="card-content">
-      //       <p>Phone: 555-555-1234</p>
-      //       <p>Email: tiramisudogrescue@gmail.com</p>
-      //     </div>
-      //   </div>
-      // </div>
-
     }
-    // -----------------------------------------------------------
   });
-
-  // <div id="animalModalId" class="modal">
-  //   <div class="modal-content">
-  //     <h4>Pet Name</h4>
-  //     <p>Pet Description</p>
-  //   </div>
-  //   <div class="modal-footer">
-  //     <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-  //   </div>
-  // </div>
 
   var queryURL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + zipInput + "&key=AIzaSyANo9S84eZ7PVyuKP2DSVE4wOawDLvocSE";
 
