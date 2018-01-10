@@ -67,6 +67,7 @@ h1 {
   width: auto;
   height: auto%;
   z-index: -100;
+  opacity: 0.65;
 
 /* Adjustments for viewing the nice part of the video. */
   margin-left: -750px;
@@ -97,11 +98,6 @@ h1 {
     min-width: 960px;
 }
 
-.container {
-  /* Adjustments for vertically centering content. */
-  /* margin-top: 130px; */
-}
-
 h6 {
   margin-top: 25px;
   font-size: 18px;
@@ -124,10 +120,6 @@ h6 {
 #rotater {
   margin-top: -15px;
 
-}
-
-.white-text {
-  /* text-shadow: 1px 1px 4px #333; */
 }
 
 .modal.bottom-sheet {
