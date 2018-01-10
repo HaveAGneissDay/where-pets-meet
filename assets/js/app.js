@@ -181,7 +181,7 @@ $(document).ready(function() {
           '<img class="activator" src="' + petImgURL + '">' +
           '<span class="card-title" id="txtCustom">' + petSearchResults[i].petName + ' (' + petSearchResults[i].petGender + ')' + '<br>' + petSearchResults[i].petCity + '</span>' +
           // '<a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger" id="petInfo" href="#' + animalModalId + '"><i class="material-icons">add</i></a>' +
-          '<a class="btn-floating btn-large waves-effect halfway-fab waves-light red petFav"><i class="material-icons">add</i></a>' +
+          '<a class="btn-floating btn-large waves-effect halfway-fab waves-light red petFav" data-value=' + i + '><i class="material-icons">add</i></a>' +
           '</div>' +
           '<div class="card-content">' +
           '<p>Phone: ' + petSearchResults[i].petPhone + '</p>' +
@@ -313,37 +313,25 @@ $(document).ready(function() {
 
   $(document).on("click", ".petFav", function() {
 
-    console.log('Button has been clicked.');
     event.preventDefault();
-    var newPetName = $(this).petSearchResults.petName;
+
+    console.log('Button has been clicked.');
+    var animalDataIndex = $(this).data('value');
+    console.log(animalDataIndex);
+
+    var newPetName = petSearchResults[animalDataIndex].petName;
     console.log(newPetName)
-    var newPetGender = petGender;
+
+    var newPetGender = petSearchResults[animalDataIndex].petGender;
     console.log(newPetGender)
-    var newAboutPet = aboutPet;
-    console.log(newAboutPet)
-    var newPetImg = petImgURL;
-    console.log(newPetImg)
-    var newPetCity = petCity;
+
+    var newPetCity = petSearchResults[animalDataIndex].petCity;
     console.log(newPetCity)
-    var newPetZip = petZipcode;
-    console.log(newPetZip)
-    var newPetState = petState;
-    console.log(newPetState)
-    var newPetEmail = petEmail;
-    console.log(newPetEmail)
-    var newPetPhoneNumber = petPhone;
-    console.log(newPetPhoneNumber)
 
     var newPetFav = {
       name: newPetName,
       gender: newPetGender,
-      about: newAboutPet,
-      img: newPetImg,
-      city: newPetCity,
-      zip: newPetZip,
-      state: newPetState,
-      email: newPetEmail,
-      phoneNumber: newPetPhoneNumber
+      city: newPetCity
     }
     database.ref().push(newPetFav);
   });
@@ -352,13 +340,7 @@ $(document).ready(function() {
       database.ref().on("child_added", function(childSnapshot) {
         var petName = childSnapshot.val().name;
         var petGender = childSnapshot.val().gender;
-        var petAbout = childSnapshot.val().about;
-        var petImg = childSnapshot.val().img;
         var petCity = childSnapshot.val().city;
-        var petZip = childSnapshot.val().zip;
-        var petState = childSnapshot.val().state;
-        var petEmail = childSnapshot.val().email;
-        var petPhoneNumber = childSnapshot.val().phoneNumber;
 
         $().append()
       })
