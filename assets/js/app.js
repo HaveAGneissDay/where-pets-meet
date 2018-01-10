@@ -317,16 +317,16 @@ $(document).ready(function() {
 
     console.log('Button has been clicked.');
     var animalDataIndex = $(this).data('value');
-    console.log(animalDataIndex);
+    // console.log(animalDataIndex);
 
     var newPetName = petSearchResults[animalDataIndex].petName;
-    console.log(newPetName)
+    // console.log(newPetName)
 
     var newPetGender = petSearchResults[animalDataIndex].petGender;
-    console.log(newPetGender)
+    // console.log(newPetGender)
 
     var newPetCity = petSearchResults[animalDataIndex].petCity;
-    console.log(newPetCity)
+    // console.log(newPetCity)
 
     var newPetFav = {
       name: newPetName,
@@ -334,17 +334,37 @@ $(document).ready(function() {
       city: newPetCity
     }
     database.ref().push(newPetFav);
-  });
-    //get the object from firebase when clicked. repopulated on the favorites
-    $().on("click", function() {
-      database.ref().on("child_added", function(childSnapshot) {
-        var petName = childSnapshot.val().name;
-        var petGender = childSnapshot.val().gender;
-        var petCity = childSnapshot.val().city;
 
-        $().append()
-      })
-    })
+  });
+
+  database.ref().on("child_added", function(childSnapshot) {
+    var petName = childSnapshot.val().name;
+    var petGender = childSnapshot.val().gender;
+    var petCity = childSnapshot.val().city;
+
+    console.log(petName + '+' + petGender + '+' + petCity);
+
+    var tabRow = $('<tr />')
+    var tabName = $('<td />')
+    var tabCity = $('<td />')
+    var tabGender = $('<td />')
+
+    $(tabName).html(petName)
+    $(tabRow).append(tabName)
+
+    $(tabGender).html(petGender)
+    $(tabRow).append(tabGender)
+
+    $(tabCity).html(petCity)
+    $(tabRow).append(tabCity)
+
+    $('tbody').append(tabRow)
+
+  })
+    //get the object from firebase when clicked. repopulated on the favorites
+    // $().on("click", function() {
+    //
+    // })
 });
 
 //Components that we need in general terms
